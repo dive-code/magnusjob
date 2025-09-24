@@ -8,24 +8,14 @@
     body {
       margin: 0;
       font-family: "Poppins", Arial, sans-serif;
-      background: #fff; /* White background */
-      color: #000; /* Black text */
+      background: #fff;
+      color: #000;
       text-align: center;
       padding: 20px;
     }
 
-    .notice {
-      background: #fff6e5;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
     .card {
-      background: #2d0052; /* Purple background */
+      background: #2d0052;
       color: #fff;
       padding: 20px;
       border-radius: 12px;
@@ -45,9 +35,17 @@
       font-weight: bold;
     }
 
-    .card p {
-      font-size: 14px;
-      line-height: 1.6;
+    .account-number {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .account-name {
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-top: 5px;
     }
 
     .note {
@@ -61,8 +59,8 @@
     .copy-btn {
       display: inline-block;
       margin-left: 10px;
-      padding: 6px 12px;
-      font-size: 13px;
+      padding: 4px 10px;
+      font-size: 12px;
       border: none;
       border-radius: 6px;
       background: #ff9900;
@@ -109,30 +107,36 @@
 </head>
 <body>
 
-  <div class="notice">
-    🔒 For your selected package, transfer exactly <b>₦11,000</b>, <b>₦17,500</b> or <b>₦28,500</b> 
-    to any of the account details below for your coupon code registration.
-  </div>
+  <p style="font-size:18px; font-weight:600; color:#333; margin-bottom:20px;">
+    For your selected package, transfer exactly 
+    <b>₦11,000</b>, <b>₦17,500</b>, or <b>₦28,500</b> 
+    to any of the accounts below for your coupon code registration
+  </p>
 
+  <!-- First Merchant -->
   <div class="card">
     <h2>MERCHANT 1</h2>
     <h3>PalmPay</h3>
-    <p><b>9160049921</b> 
-      <button class="copy-btn" onclick="copyText('9160049921')">Copy</button>
+    <p class="account-number">
+      <span id="acct1">9160049921</span>
+      <button class="copy-btn" onclick="copyText('9160049921')">📋</button>
     </p>
-    <p>Lucy Abanum _magnus</p>
+    <p class="account-name">Lucy Abanum _magnus</p>
   </div>
 
+  <!-- Second Merchant -->
   <div class="card">
     <h2>MERCHANT 2</h2>
     <h3>FCMB</h3>
-    <p><b>1036388934</b> 
-      <button class="copy-btn" onclick="copyText('1036388934')">Copy</button>
+    <p class="account-number">
+      <span id="acct2">1036388934</span>
+      <button class="copy-btn" onclick="copyText('1036388934')">📋</button>
     </p>
-    <p>Divine Abanum</p>
+    <p class="account-name">Divine Abanum</p>
     <p class="note">(NOTE: Don’t pay with Opay. Use PalmPay, FCMB, or other banks.)</p>
   </div>
 
+  <!-- Verify -->
   <div class="verify-section">
     <p>Click the button below to verify your payment</p>
     <a href="https://wa.link/jjgyci" target="_blank" class="verify-btn">✅ I have made the transfer</a>
