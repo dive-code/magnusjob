@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnus Registration & Payment</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 160px;
+    }
+
+    h1 {
+      color: #ff9900;
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      background: #222;
+      color: #fff;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .payment-section {
+      display: none;
+      margin-top: 30px;
+      background: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .notice {
+      background: #fff6e5;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .payment-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      flex: 1 1 45%;
+      min-width: 250px;
+      background: #2d0052;
+      color: #fff;
+      padding: 25px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .card h2 {
+      font-size: 15px;
+      margin-bottom: 5px;
+      color: #ffcc00;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin: 8px 0;
+      font-weight: bold;
+    }
+
+    .copy-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      border: none;
+      border-radius: 6px;
+      background: #ff9900;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .note {
+      margin-top: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffcc00;
+      line-height: 1.6;
+    }
+
+    .verify-btn {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      padding: 15px;
+      border: none;
+      border-radius: 25px;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .verify-btn:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="Magnus Logo">
+    </div>
+
+    <h1>Register with Magnus</h1>
+
+    <!-- Registration Form -->
+    <form id="regForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Choose a username" required>
+
+      <label for="number">Phone Number</label>
+      <input type="tel" id="number" name="number" placeholder="Enter your phone number" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="plan">Select Plan</label>
+      <select id="plan" name="plan" required>
+        <option value="">Choose a plan</option>
+        <option value="11000">Lite – ₦11,000</option>
+        <option value="17500">Pro – ₦17,500</option>
+        <option value="28500">Business – ₦28,500</option>
+      </select>
+
+      <button type="submit" class="btn">Continue to Payment</button>
+    </form>
+
+    <!-- Payment Section -->
+    <div class="payment-section" id="paymentSection">
+      <div class="notice" id="paymentNotice">
+        🔒 For your selected package, transfer the amount to any of the account details below for your coupon code registration.
+      </div>
+
+      <div class="payment-options">
+        <div class="card">
+          <h2>MERCHANT 1</h2>
+          <h3>PalmPay</h3>
+          <p><b>9160049921</b> <button class="copy-btn" onclick="copyText('9160049921')">Copy</button></p>
+          <p>Lucy Abanum _msgnus</p>
+        </div>
+
+        <div class="card">
+          <h2>MERCHANT 2</h2>
+          <h3>FCMB</h3>
+          <p><b>1036388934</b> <button class="copy-btn" onclick="copyText('1036388934')">Copy</button></p>
+          <p>Divine Abanum</p>
+          <p class="note">⚠️ Don’t pay with Opay. Use PalmPay, FCMB, or any other bank.</p>
+        </div>
+      </div>
+
+      <a href="#" target="_blank" class="verify-btn" id="whatsappBtn">
+        I have made the transfer
+      </a>
+    </div>
+
+    <footer>
+      © 2025 Magnus. All Rights Reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("regForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const username = document.getElementById("username").value;
+      const number = document.getElementById("number").value;
+      const email = document.getElementById("email").value;
+      const plan = document.getElementById("plan").value;
+      const planText = document.getElementById("plan").selectedOptions[0].text;
+
+      if (plan) {
+        document.getElementById("paymentNotice").innerHTML =
+          🔒 For your selected package <b>${planText}</b>, transfer exactly <b>₦${plan}</b> to any of the account details below for your coupon code registration.;
+
+        document.getElementById("paymentSection").style.display = "block";
+        this.style.display = "none";
+
+        // WhatsApp message
+        const msg =
+          Hello Magnus agent, I have registered\n\n +
+          Name: ${name}\nUsername: ${username}\nPhone: ${number}\nEmail: ${email}\nPlan: ${planText} (₦${plan})\n\n +
+          I have made transfer, here is my payment proof.;
+
+        document.getElementById("whatsappBtn").href =
+          https://wa.me/2347083688156?text=${encodeURIComponent(msg)};
+      }
+    });
+
+    function copyText(account) {
+      navigator.clipboard.writeText(account).then(() => {
+        alert("Account number copied: " + account);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
