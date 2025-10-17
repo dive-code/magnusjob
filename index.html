@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Magnus</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 45px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .logo h1 {
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: orange;
+    }
+
+    /* 3 DOT MENU (Mobile) */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: orange;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 160px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      }
+
+      nav a {
+        padding: 10px;
+        border-bottom: 1px solid #222;
+      }
+
+      nav a:last-child { border-bottom: none; }
+
+      input[type="checkbox"]:checked ~ nav {
+        display: flex;
+      }
+
+      .menu-toggle { display: block; }
+    }
+
+    /* HERO ANIMATION */
+    .hero {
+      opacity: 0;
+      background: radial-gradient(circle at center, rgba(255,153,0,0.08), transparent 70%);
+      animation: heroBgFade 1.5s ease forwards;
+      animation-delay: 0.2s;
+      padding: 90px 20px 60px;
+      text-align: center;
+    }
+
+    .hero h1,
+    .hero h2,
+    .hero p,
+    .hero a {
+      opacity: 0;
+      transform: translateY(25px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      font-weight: 700;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      animation-delay: 0.4s;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      font-weight: 500;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      animation-delay: 0.8s;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: auto;
+      color: #ccc;
+      line-height: 1.7;
+      font-size: 15px;
+      animation-delay: 1.2s;
+    }
+
+    .hero a {
+      animation-delay: 1.6s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroBgFade {
+      from { opacity: 0; background: radial-gradient(circle at center, rgba(255,153,0,0), transparent 70%); }
+      to { opacity: 1; background: radial-gradient(circle at center, rgba(255,153,0,0.08), transparent 70%); }
+    }
+
+    /* GENERAL STYLING */
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 12px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 40px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      border-radius: 40px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cta:hover { transform: scale(1.05); }
+
+    /* PLAN CARDS */
+    .plan-card {
+      background: #111;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: left;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .plan-card:hover {
+      box-shadow: 0 0 20px rgba(255, 153, 0, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    .plan-card ul li {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .plan-card .btn {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .plan-card .btn:hover { transform: scale(1.05); }
+
+    /* RECOMMENDED BADGE */
+    .recommended {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: linear-gradient(to right, #ff9900, #ff0057);
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 8px;
+      animation: glowPulse 1.8s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from { box-shadow: 0 0 5px #ff9900; }
+      to { box-shadow: 0 0 20px #ff0057; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+      background: #111;
+      font-size: 13px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Magnus Logo" />
+      <h1>Magnus</h1>
+    </div>
+
+    <input type="checkbox" id="menu-toggle" hidden />
+    <label for="menu-toggle" class="menu-toggle">⋮</label>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#plans">Plans</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>🌟 Welcome to Magnus</h1>
+    <h2>Experience Financial Freedom — Empower Your Future</h2>
+    <p>Magnus offers unrestricted access to everyone within and outside Nigeria. 
+      You don't stay a day without completing 2–5 jobs at least.</p>
+    <div class="hero-image">
+      <img src="hero-banner.jpg" alt="Hero Banner" />
+    </div>
+    <a href="register.html" class="cta">Join Us Now</a>
+  </section>
+
+  <!-- MAIN CONTENT SECTIONS -->
+  <section>
+    <h2>✨ What Magnus has in store for you as a user!</h2>
+    <ul style="text-align:left; display:inline-block;">
+      <li>▫️ Hot, In-demand skills</li>
+      <li>▫️ Unlimited access to digital products</li>
+      <li>▫️ Job offers from top international companies upon skill acquisition</li>
+      <li>▫️ Global rewards and recognition</li>
+      <li>▫️ Expert guidance from experienced coaches and instructors</li>
+      <li>▫️ Unlimited earning potential to achieve your financial goals</li>
+      <li>▫️ Earning over ₦30,000 daily is assured!</li>
+    </ul>
+  </section>
+
+  <section id="plans">
+    <h2>Choose Your Preferred Plan</h2>
+
+    <div class="plan-card">
+      <h3>🦾 Magnus Pro : ₦17,500</h3>
+      <ul>
+        <li>Unlimited Job requests</li>
+        <li>Unlimited Skills activities</li>
+        <li>Limited earning Structures</li>
+        <li>Limited Vendorship opportunities</li>
+        <li>Weekly payment</li>
+      </ul>
+      <p style="color:orange; font-weight:bold;">💡 Note: You can earn up to ₦15,000 daily.</p>
+      <a href="register.html" class="btn">Register for Magnus Pro</a>
+    </div>
+
+    <div class="plan-card">
+      <div class="recommended">Recommended</div>
+      <h3>🔥 Magnus Business : ₦28,500</h3>
+      <ul>
+        <li>Unlimited job opportunities</li>
+        <li>Unlimited earning Structures</li>
+        <li>Unlimited skill activities</li>
+        <li>Unlimited job requests</li>
+        <li>Unlimited Vendorship opportunities</li>
+        <li>Daily payment remittance</li>
+      </ul>
+      <p style="color:orange; font-weight:bold;">💡 Note: You can earn up to ₦30,000 daily.</p>
+      <a href="register.html" class="btn">Register for Magnus Business</a>
+    </div>
+
+    <div class="plan-card">
+      <h3>⭐ Magnus Lite : ₦11,000</h3>
+      <ul>
+        <li>Unlimited job requests</li>
+        <li>Limited skills activities</li>
+        <li>Limited earning Structures</li>
+        <li>Limited Vendorship opportunities</li>
+        <li>Monthly payment remittance</li>
+      </ul>
+      <p style="color:orange; font-weight:bold;">💡 Note: You can earn up to ₦10,000 daily.</p>
+      <a href="register.html" class="btn">Register for Magnus Lite</a>
+    </div>
+
+    <p style="margin-top:20px; font-size:14px; color:#bbb;">
+      The higher your package, the higher your earnings 🚀
+    </p>
+  </section>
+
+  <section>
+    <h2>Magnus Technology 👨‍💻</h2>
+    <div class="hero-image">
+      <img src="magnus-tech.jpg" alt="Magnus Technology" />
+    </div>
+  </section>
+
+  <section>
+    <h2>🔥 What MAGNUS Offers You</h2>
+    <ul style="text-align:left; display:inline-block;">
+      <li>✔️ Resale Rights – Earn while others are still learning</li>
+      <li>✔️ Trading (Buy & Resell) – Simple income opportunities</li>
+      <li>✔️ Instant Skill Application – Put knowledge into practice fast</li>
+      <li>✔️ Standby Data Entry Job Offer – Ready-to-go tasks for extra income</li>
+      <li>✔️ Discounted Digital Products – Access affordable tools that work</li>
+      <li>✔️ Multi-Layered Sales Rewards – Earn from direct and indirect sales</li>
+      <li>✔️ Global Reward Structure – Opportunities that scale worldwide</li>
+    </ul>
+  </section>
+
+  <section style="text-align:center; padding:50px 20px; background:#000;">
+    <h2 style="font-size:22px; margin-bottom:10px;">Register and Get Instant Access</h2>
+    <p style="color:#bbb; font-size:14px; margin-bottom:20px;">Limited Access – Register Now</p>
+    <a href="register.html" class="cta">Register Now</a>
+  </section>
+
+  <footer>
+    © 2025 Magnus. All Rights Reserved.
+  </footer>
+</body>
+</html>
