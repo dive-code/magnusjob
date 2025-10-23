@@ -125,8 +125,7 @@ form.addEventListener('submit', function(e){
   const terms = document.getElementById('terms');
 
   document.getElementById('nameError').style.display = name.value.trim().split(' ').length < 2 ? (valid=false, 'block') : 'none';
-  document.getElementById('usernameErrornone';
-  document.getElementById('numberError').style.display = !/^[0-9]{10,15}$/.test(number.value.trim()) ? (valid=false,'block') : 'none';
+  document.getElementById('usernameError').document.getElementById('numberError').style.display = !/^[0-9]{10,15}$/.test(number.value.trim()) ? (valid=false,'block') : 'none';
   document.getElementById('emailError').style.display = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()) ? (valid=false,'block') : 'none';
   document.getElementById('countryError').style.display = country.value==='' ? (valid=false,'block') : 'none';
   document.getElementById('planError').style.display = plan.value==='' ? (valid=false,'block') : 'none';
@@ -146,4 +145,3 @@ form.addEventListener('submit', function(e){
 </script>
 </body>
 </html>
-
