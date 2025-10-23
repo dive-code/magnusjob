@@ -118,14 +118,15 @@ form.addEventListener('submit', function(e){
 
   // Validation
   const name = document.getElementById('name');
-  const username = document.getElementById('username');
+ 
   const number = document.getElementById('number');
   const email = document.getElementById('email');
   const plan = document.getElementById('plan');
   const terms = document.getElementById('terms');
 
   document.getElementById('nameError').style.display = name.value.trim().split(' ').length < 2 ? (valid=false, 'block') : 'none';
-  document.getElementById('usernameError').document.getElementById('numberError').style.display = !/^[0-9]{10,15}$/.test(number.value.trim()) ? (valid=false,'block') : 'none';
+  document.getElementById('usernameError').
+  document.getElementById('numberError').style.display = !/^[0-9]{10,15}$/.test(number.value.trim()) ? (valid=false,'block') : 'none';
   document.getElementById('emailError').style.display = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()) ? (valid=false,'block') : 'none';
   document.getElementById('countryError').style.display = country.value==='' ? (valid=false,'block') : 'none';
   document.getElementById('planError').style.display = plan.value==='' ? (valid=false,'block') : 'none';
@@ -145,3 +146,6 @@ form.addEventListener('submit', function(e){
 </script>
 </body>
 </html>
+
+
+
