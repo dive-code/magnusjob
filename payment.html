@@ -100,15 +100,16 @@ document.addEventListener("DOMContentLoaded", function() {
     toast.style.display = "block";
     setTimeout(() => toast.style.display = "none", 1500);
   }
-You sent
+<script>
 // ✅ Timer Function
 const countdownDisplay = document.getElementById("countdown");
-let timeLeft = 600; // 10 minutes (in seconds)
+let timeLeft = 600; // 10 minutes
 
 const timerInterval = setInterval(() => {
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
+  // ✅ Use backticks, not quotes
   countdownDisplay.textContent = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};
 
   if (timeLeft <= 0) {
@@ -120,3 +121,6 @@ const timerInterval = setInterval(() => {
 
   timeLeft--;
 }, 1000);
+</script>
+
+
