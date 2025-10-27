@@ -1,126 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Magnus Payment</title>
-<style>
-  body { margin:0; font-family:"Poppins",Arial,sans-serif; background:#fff; color:#000; text-align:center; padding:20px; }
-  .alert { background:#ff0000; color:#fff; padding:12px; border-radius:8px; font-weight:600; font-size:15px; box-shadow:0 0 15px rgba(255,0,0,0.3); margin-bottom:20px; animation:blink 1.5s infinite alternate; }
-  @keyframes blink { from { opacity:1; } to { opacity:0.6; } }
-  .card { background:#2d0052; color:#fff; padding:20px; border-radius:12px; margin:20px auto; max-width:420px; box-shadow:0 5px 20px rgba(0,0,0,0.2); }
-  .card h2 { font-size:16px; color:#ffcc00; margin-bottom:8px; }
-  .card h3 { font-size:18px; font-weight:bold; margin:8px 0; }
-  .account-number { font-size:20px; font-weight:bold; margin:10px 0; }
-  .account-name { font-size:15px; font-weight:bold; color:#ffcc00; margin-top:5px; }
-  .note { font-size:13px; font-weight:bold; color:#ffcc00; margin-top:10px; line-height:1.6; }
-  .copy-btn { display:inline-block; margin-left:10px; padding:6px 10px; font-size:12px; border:none; border-radius:6px; background:#ff9900; color:#fff; cursor:pointer; transition:0.15s; }
-  .copy-btn:hover { background:#e68900; }
-  .spinner { border:4px solid #ccc; border-top:4px solid #ff9900; border-radius:50%; width:50px; height:50px; animation:spin 1s linear infinite, pulse 2s ease-in-out infinite; margin:25px auto 10px; }
-  @keyframes spin { 0% {transform:rotate(0deg);} 100% {transform:rotate(360deg);} }
-  @keyframes pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.1); } }
-  .timer { font-weight:bold; color:#ff9900; font-size:16px; margin-top:5px; transition:color 0.5s ease; }
-  .verify-section { margin-top:25px; }
-  .verify-btn { display:block; width:100%; max-width:350px; margin:auto; padding:15px; border:none; border-radius:25px; background:#000; color:#fff; font-size:15px; font-weight:bold; cursor:pointer; text-decoration:none; transition:0.3s; }
-  .verify-btn:hover { opacity:0.9; }
-  footer { margin-top:25px; font-size:13px; color:#555; }
-  #toast { position:fixed; bottom:25px; left:50%; transform:translateX(-50%); background:#000; color:#fff; padding:10px 15px; border-radius:8px; display:none; font-size:14px; }
-</style>
-</head>
-<body>
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Magnus Payment</title>  
+  <style>  
+    body {  
+      margin: 0;  
+      font-family: "Poppins", Arial, sans-serif;  
+      background: #fff;  
+      color: #000;  
+      text-align: center;  
+      padding: 20px;  
+    }  
 
-  <div class="alert">
-    ⚠️ Complete your payment within <b>10 minutes</b> to secure your Magnus registration.
-  </div>
+    .card {  
+      background: #2d0052;  
+      color: #fff;  
+      padding: 20px;  
+      border-radius: 12px;  
+      margin-bottom: 20px;  
+      text-align: center;  
+    }  
 
-  <p style="font-size:18px; font-weight:600; color:#333; margin-bottom:20px;">
-    Transfer exactly <b>₦11,000</b>, <b>₦17,500</b>, or <b>₦28,500</b> to any account below to complete your Magnus registration:
-  </p>
+    .card h2 {  
+      font-size: 16px;  
+      margin-bottom: 5px;  
+      color: #ffcc00;  
+    }  
 
-  <div class="card">
-    <h2>MERCHANT 1</h2>
-    <h3>OPAY</h3>
-    <p class="account-number">
-      <span class="acct">6112282804</span>
-      <button class="copy-btn" data-account="6112282804">📋 Copy</button>
-    </p>
-    <p class="account-name">Lucy Abanum _magnus</p>
-  </div>
+    .card h3 {  
+      font-size: 18px;  
+      margin: 8px 0;  
+      font-weight: bold;  
+    }  
 
-  <div class="card">
-    <h2>MERCHANT 2</h2>
-    <h3>FCMB (First City Monument Bank)</h3>
-    <p class="account-number">
-      <span class="acct">1036388934</span>
-      <button class="copy-btn" data-account="1036388934">📋 Copy</button>
-    </p>
-    <p class="account-name">Divine Abanum</p>
-    <p class="note">NOTE: Do not pay with Opay. Use PalmPay, FCMB, or other banks.</p>
-  </div>
+    .account-number {  
+      font-size: 20px;  
+      font-weight: bold;  
+      margin: 10px 0;  
+    }  
 
-  <div class="spinner"></div>
-  <div class="timer">⏳ Time left: <span id="countdown">10:00</span></div>
+    .account-name {  
+      font-size: 15px;  
+      font-weight: bold;  
+      color: #ffcc00;  
+      margin-top: 5px;  
+    }  
 
-  <div class="verify-section">
-    <p>Click below to confirm your payment</p>
-    <a href="https://wa.link/yx45yk" target="_blank" class="verify-btn">✅ I have made the transfer</a>
-  </div>
+    .note {  
+      margin-top: 10px;  
+      font-size: 13px;  
+      font-weight: bold;  
+      color: #ffcc00;  
+      line-height: 1.6;  
+    }  
 
-  <div id="toast">Copied!</div>
+    .copy-btn {  
+      display: inline-block;  
+      margin-left: 10px;  
+      padding: 4px 10px;  
+      font-size: 12px;  
+      border: none;  
+      border-radius: 6px;  
+      background: #ff9900;  
+      color: #fff;  
+      cursor: pointer;  
+      transition: 0.3s;  
+    }  
 
-  <footer>© 2025 Magnus. All Rights Reserved.</footer>
+    .copy-btn:hover {  
+      background: #e68900;  
+    }  
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+    .verify-section {  
+      margin-top: 25px;  
+    }  
 
-  // ✅ Copy Function
-  document.querySelectorAll(".copy-btn").forEach(button => {
-    button.addEventListener("click", async () => {
-      const account = button.getAttribute("data-account");
-      try {
-        await navigator.clipboard.writeText(account);
-        showToast(Copied: ${account});
-      } catch (err) {
-        // Fallback for browsers blocking navigator.clipboard
-        const temp = document.createElement("textarea");
-        temp.value = account;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-        showToast(Copied: ${account});
-      }
-    });
-  });
+    .verify-btn {  
+      display: block;  
+      width: 100%;  
+      max-width: 350px;  
+      margin: auto;  
+      padding: 15px;  
+      border: none;  
+      border-radius: 25px;  
+      background: #000;  
+      color: #fff;  
+      font-size: 15px;  
+      font-weight: bold;  
+      cursor: pointer;  
+      transition: 0.3s;  
+      text-decoration: none;  
+    }  
 
-  // ✅ Toast Function
-  const toast = document.getElementById("toast");
-  function showToast(message) {
-    toast.textContent = message;
-    toast.style.display = "block";
-    setTimeout(() => toast.style.display = "none", 1500);
-  }
-<script>
-// ✅ Timer Function
-const countdownDisplay = document.getElementById("countdown");
-let timeLeft = 600; // 10 minutes
+    .verify-btn:hover {  
+      opacity: 0.9;  
+    }  
 
-const timerInterval = setInterval(() => {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
+    footer {  
+      margin-top: 25px;  
+      font-size: 13px;  
+      color: #555;  
+    }  
+  </style>  
+</head>  
+<body>  
 
-  // ✅ Use backticks, not quotes
-  countdownDisplay.textContent = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};
+  <p style="font-size:18px; font-weight:600; color:#333; margin-bottom:20px;">  
+    For your selected package, transfer exactly   
+    <b>₦11,000</b>, <b>₦17,500</b>, or <b>₦28,500</b>   
+    to any of the accounts below for your coupon code registration.  
+  </p>  
 
-  if (timeLeft <= 0) {
-    clearInterval(timerInterval);
-    countdownDisplay.textContent = "00:00";
-    document.querySelector(".timer").innerHTML = "🔁 Session expired — refreshing...";
-    setTimeout(() => location.reload(), 2000);
-  }
+  <!-- First Merchant -->  
+  <div class="card">  
+    <h2>MERCHANT 1</h2>  
+    <h3>OPAY</h3>  
+    <p class="account-number">  
+      <span id="acct1">6112282804</span>  
+      <button class="copy-btn" onclick="copyText('6112282804')">📋</button>  
+    </p>  
+    <p class="account-name">Lucy Abanum _magnus</p>  
+  </div>  
 
-  timeLeft--;
-}, 1000);
-</script>
+  <!-- Second Merchant -->  
+  <div class="card">  
+    <h2>MERCHANT 2</h2>  
+    <h3>FCMB (First City Monument Bank)</h3>  
+    <p class="account-number">  
+      <span id="acct2">1036388934</span>  
+      <button class="copy-btn" onclick="copyText('1036388934')">📋</button>  
+    </p>  
+    <p class="account-name">Divine Abanum</p>  
+    <p class="note">(NOTE: Don’t pay with Opay. Use PalmPay, FCMB, or other banks.)</p>  
+  </div>  
 
+  <!-- Verify -->  
+  <div class="verify-section">  
+    <p>Click the button below to verify your payment</p>  
+    <a href="https://wa.link/yx45yk" target="_blank" class="verify-btn">✅ I have made the transfer</a>  
+  </div>  
 
+  <footer>  
+    © 2025 Magnus. All Rights Reserved.  
+  </footer>  
+
+  <script>  
+    function copyText(account) {  
+      navigator.clipboard.writeText(account).then(() => {  
+        alert("Account number copied: " + account);  
+      }).catch(() => {  
+        // Fallback in case clipboard API fails  
+        const tempInput = document.createElement("input");  
+        tempInput.value = account;  
+        document.body.appendChild(tempInput);  
+        tempInput.select();  
+        document.execCommand("copy");  
+        document.body.removeChild(tempInput);  
+        alert("Account number copied: " + account);  
+      });  
+    }  
+  </script>  
+
+</body>  
+</html>
