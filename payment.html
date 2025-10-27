@@ -149,6 +149,9 @@ function copyText(account) {
     toast.textContent = "✅ Account copied: " + account;
     toast.style.display = "block";
     setTimeout(() => toast.style.display = "none", 1500);
+  }).catch(err => {
+    alert("Clipboard not supported on this browser. Please copy manually.");
+    console.error(err);
   });
 }
 
@@ -173,4 +176,11 @@ const timer = setInterval(() => {
     clearInterval(timer);
     countdownDisplay.textContent = "00:00";
     timerEl.textContent = "🔁 Session expired — refreshing...";
-    setTimeout(() => location.reload
+    setTimeout(() => location.reload(), 2000);
+  }
+
+  timeLeft--;
+}, 1000);
+</script>
+</body>
+</html>
