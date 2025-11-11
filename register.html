@@ -24,15 +24,11 @@ input:focus, select:focus { border:1px solid #ff9900; outline:none; }
 .btn {
   width:100%; padding:14px; border:none; border-radius:25px; font-size:1rem; font-weight:bold;
   color:#fff; background:linear-gradient(to right, #ff9900, #ff0057);
-  cursor:not-allowed; opacity:0.5; transition:opacity 0.2s ease, transform 0.2s ease;
+  cursor:pointer; opacity:1; transition:opacity 0.2s ease, transform 0.2s ease;
 }
-.btn.active {
-  cursor:pointer; opacity:1;
-}
-.btn:hover.active { opacity:0.9; transform:scale(1.02); }
+.btn:hover { opacity:0.9; transform:scale(1.02); }
 .checkbox-container { display:flex; align-items:center; margin-bottom:15px; font-size:0.9rem; }
 .checkbox-container input { margin-right:10px; width:auto; }
-.error { color:#ff4444; font-size:0.85rem; margin-bottom:10px; display:none; }
 footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
 @media (max-width:480px){
   .container{padding:20px 15px; border-radius:10px;}
@@ -45,45 +41,38 @@ footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
 <body>
 <div class="container">
 <h1>Create Your Account</h1>
-<form id="registrationForm" novalidate>
+<form id="registrationForm">
   <label for="name">Full Name</label>
-  <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-  <div class="error" id="nameError">Please enter your full name (at least 2 words).</div>
+  <input type="text" id="name" name="name" placeholder="Enter your full name">
 
   <label for="username">Username</label>
-  <input type="text" id="username" name="username" placeholder="Choose a username" required>
-  <div class="error" id="usernameError">Username must be 3-15 characters, letters, numbers, or underscores only.</div>
+  <input type="text" id="username" name="username" placeholder="Choose a username">
 
   <label for="number">Phone Number</label>
-  <input type="tel" id="number" name="number" placeholder="Enter your phone number" required>
-  <div class="error" id="numberError">Phone number must be 10-15 digits.</div>
+  <input type="tel" id="number" name="number" placeholder="Enter your phone number">
 
   <label for="email">Email Address</label>
-  <input type="email" id="email" name="email" placeholder="Enter your email" required>
-  <div class="error" id="emailError">Please enter a valid email address.</div>
+  <input type="email" id="email" name="email" placeholder="Enter your email">
 
   <label for="country">Select Country</label>
-  <select id="country" name="country" required>
+  <select id="country" name="country">
     <option value="">Select country</option>
     <option value="Nigeria">Nigeria</option>
     <option value="Other">Other Country</option>
   </select>
-  <div class="error" id="countryError">Please select a country.</div>
 
   <label for="plan">Select Plan</label>
-  <select id="plan" name="plan" required>
+  <select id="plan" name="plan">
     <option value="">Choose a plan</option>
     <option value="11000">Lite – ₦11,000</option>
     <option value="17500">Pro – ₦17,500</option>
     <option value="28500">Business – ₦28,500</option>
   </select>
-  <div class="error" id="planError">Please select a plan.</div>
 
   <div class="checkbox-container">
-    <input type="checkbox" id="terms" name="terms" required>
+    <input type="checkbox" id="terms" name="terms">
     <label for="terms">I agree to the <a href="#" style="color:#ff9900;">Terms & Conditions</a></label>
   </div>
-  <div class="error" id="termsError">You must agree to the terms and conditions.</div>
 
   <button type="submit" class="btn" id="continueBtn">Continue</button>
 </form>
@@ -91,61 +80,17 @@ footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
 </div>
 
 <script>
-const form = document.getElementById('registrationForm');
-const country = document.getElementById('country');
-const continueBtn = document.getElementById('continueBtn');
-
-// Enable button only when a country is selected
-country.addEventListener('change', function() {
-  if(this.value !== ''){
-    continueBtn.classList.add("active");
-    continueBtn.disabled = false;
-    continueBtn.style.cursor = "pointer";
-    continueBtn.textContent = this.value === 'Nigeria' ? "Continue to Payment" : "Continue to WhatsApp";
-  } else {
-    continueBtn.classList.remove("active");
-    continueBtn.disabled = true;
-    continueBtn.textContent = "Continue";
-  }
-});
-
-// Form submit with validation and redirect logic
-form.addEventListener('submit', function(e){
+document.getElementById('registrationForm').addEventListener('submit', function(e){
   e.preventDefault();
-  if(!continueBtn.classList.contains("active")) return;
-
-  let valid = true;
-
-  // Validation
-  const name = document.getElementById('name');
-  const username = document.getElementById('username');
-  const number = document.getElementById('number');
-  const email = document.getElementById('email');
-  const plan = document.getElementById('plan');
-  const terms = document.getElementById('terms');
-
-  document.getElementById('nameError').style.display = name.value.trim().split(' ').length < 2 ? (valid=false, 'block') : 'none';
-  document.getElementById('usernameError').style.display = !/^[A-Za-z0-9_]{3,15}$/.test(username.value.trim()) ? (valid=false,'block') : 'none';
-  document.getElementById('numberError').style.display = !/^[0-9]{10,15}$/.test(number.value.trim()) ? (valid=false,'block') : 'none';
-  document.getElementById('emailError').style.display = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()) ? (valid=false,'block') : 'none';
-  document.getElementById('countryError').style.display = country.value==='' ? (valid=false,'block') : 'none';
-  document.getElementById('planError').style.display = plan.value==='' ? (valid=false,'block') : 'none';
-  document.getElementById('termsError').style.display = !terms.checked ? (valid=false,'block') : 'none';
-
-  if(!valid) return;
-
-  // Redirect based on country
-  if(country.value === 'Nigeria'){
+  const country = document.getElementById('country').value;
+  if(country === 'Nigeria'){
     window.location.href = "payment.html"; 
-  } else if(country.value === 'Other'){
-    let message = "Hello, I'm a foreigner. How can I pay for Magnus? I am from another country.";
+  } else {
+    let message = "Hello, I'm interested in registering for Magnus.";
     let encodedMessage = encodeURIComponent(message);
-    window.location.href = "https://wa.me/2349134554410?text=" + encodedMessage;
+    window.location.href = "https://wa.me/15067100238?text=" + encodedMessage;
   }
 });
 </script>
 </body>
 </html>
-
-
-
