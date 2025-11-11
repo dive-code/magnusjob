@@ -29,6 +29,7 @@ input:focus, select:focus { border:1px solid #ff9900; outline:none; }
 .btn:hover { opacity:0.9; transform:scale(1.02); }
 .checkbox-container { display:flex; align-items:center; margin-bottom:15px; font-size:0.9rem; }
 .checkbox-container input { margin-right:10px; width:auto; }
+.error { color:#ff4444; font-size:0.85rem; margin-bottom:10px; display:none; }
 footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
 @media (max-width:480px){
   .container{padding:20px 15px; border-radius:10px;}
@@ -41,7 +42,7 @@ footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
 <body>
 <div class="container">
 <h1>Create Your Account</h1>
-<form id="registrationForm">
+<form id="registrationForm" novalidate>
   <label for="name">Full Name</label>
   <input type="text" id="name" name="name" placeholder="Enter your full name">
 
@@ -52,7 +53,8 @@ footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
   <input type="tel" id="number" name="number" placeholder="Enter your phone number">
 
   <label for="email">Email Address</label>
-  <input type="email" id="email" name="email" placeholder="Enter your email">
+  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+  <div class="error" id="emailError">Please enter a valid email address.</div>
 
   <label for="country">Select Country</label>
   <select id="country" name="country">
@@ -73,6 +75,7 @@ footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
     <input type="checkbox" id="terms" name="terms">
     <label for="terms">I agree to the <a href="#" style="color:#ff9900;">Terms & Conditions</a></label>
   </div>
+  <div class="error" id="termsError">You must agree to the terms and conditions.</div>
 
   <button type="submit" class="btn" id="continueBtn">Continue</button>
 </form>
@@ -82,7 +85,34 @@ footer { margin-top:15px; text-align:center; font-size:0.8rem; color:#aaa; }
 <script>
 document.getElementById('registrationForm').addEventListener('submit', function(e){
   e.preventDefault();
+
+  const email = document.getElementById('email');
+  const terms = document.getElementById('terms');
+  const emailError = document.getElementById('emailError');
+  const termsError = document.getElementById('termsError');
   const country = document.getElementById('country').value;
+
+  let valid = true;
+
+  // Email validation
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){
+    emailError.style.display = 'block';
+    valid = false;
+  } else {
+    emailError.style.display = 'none';
+  }
+
+  // Terms validation
+  if(!terms.checked){
+    termsError.style.display = 'block';
+    valid = false;
+  } else {
+    termsError.style.display = 'none';
+  }
+
+  if(!valid) return;
+
+  // Redirect based on country
   if(country === 'Nigeria'){
     window.location.href = "payment.html"; 
   } else {
