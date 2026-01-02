@@ -4,190 +4,184 @@
   <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Magnus Payment</title>  
-  <style>  
-    body {  
-      margin: 0;  
-      font-family: "Poppins", Arial, sans-serif;  
-      background: #fff;  
-      color: #000;  
-      text-align: center;  
-      padding: 20px;  
-    }  
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", Arial, sans-serif;
+      background: #fff;
+      color: #000;
+      text-align: center;
+      padding: 20px;
+    }
 
-    .card {  
-      background: #2d0052;  
-      color: #fff;  
-      padding: 20px;  
-      border-radius: 12px;  
-      margin-bottom: 20px;  
-      text-align: center;  
-    }  
+    .warning {
+      background: #ffdddd;
+      color: red;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
 
-    .card h2 {  
-      font-size: 16px;  
-      margin-bottom: 5px;  
-      color: #ffcc00;  
-    }  
+    .card {
+      background: #2d0052;
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-    .card h3 {  
-      font-size: 18px;  
-      margin: 8px 0;  
-      font-weight: bold;  
-    }  
+    .card h2 {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #ffcc00;
+    }
 
-    .account-number {  
-      font-size: 20px;  
-      font-weight: bold;  
-      margin: 10px 0;  
-    }  
+    .card h3 {
+      font-size: 18px;
+      margin: 8px 0;
+      font-weight: bold;
+    }
 
-    .account-name {  
-      font-size: 15px;  
-      font-weight: bold;  
-      color: #ffcc00;  
-      margin-top: 5px;  
-    }  
+    .account-number {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
 
-    .note {  
-      margin-top: 10px;  
-      font-size: 13px;  
-      font-weight: bold;  
-      color: #ffcc00;  
-      line-height: 1.6;  
-    }  
+    .account-name {
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffcc00;
+      margin-top: 5px;
+    }
 
-    .copy-btn {  
-      display: inline-block;  
-      margin-left: 10px;  
-      padding: 6px 14px;  
-      font-size: 13px;  
-      border: none;  
-      border-radius: 6px;  
-      background: #ff9900;  
-      color: #fff;  
-      cursor: pointer;  
-      transition: 0.3s;  
-      font-weight: bold;  
-    }  
+    .copy-btn {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 6px 14px;
+      font-size: 13px;
+      border: none;
+      border-radius: 6px;
+      background: #ff9900;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
 
-    .copy-btn:hover {  
-      background: #e68900;  
-    }  
+    .copy-btn:hover {
+      background: #e68900;
+    }
 
-    .verify-section {  
-      margin-top: 25px;  
-    }  
+    .verify-section {
+      margin-top: 25px;
+    }
 
-    .verify-btn {  
-      display: block;  
-      width: 100%;  
-      max-width: 350px;  
-      margin: auto;  
-      padding: 15px;  
-      border: none;  
-      border-radius: 25px;  
-      background: #000;  
-      color: #fff;  
-      font-size: 15px;  
-      font-weight: bold;  
-      cursor: pointer;  
-      transition: 0.3s;  
-      text-decoration: none;  
-    }  
+    .verify-btn {
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      margin: auto;
+      padding: 15px;
+      border: none;
+      border-radius: 25px;
+      background: #000;
+      color: #fff;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
 
-    .verify-btn:hover {  
-      opacity: 0.9;  
-    }  
+    .verify-btn:hover {
+      opacity: 0.9;
+    }
 
-    footer {  
-      margin-top: 25px;  
-      font-size: 13px;  
-      color: #555;  
-    }  
-  </style>  
-</head>  
-<body>  
+    footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
 
-  <p style="font-size:18px; font-weight:600; color:#333; margin-bottom:20px;">  
-    For your selected package, transfer exactly   
-    <b>₦11,000</b>, <b>₦17,500</b>, or <b>₦28,500</b>   
-    to any of the accounts below for your coupon code registration.  
-  </p>  
+  <!-- Warning Banner -->
+  <div class="warning">
+    ⚠️ When making the payment, please add words like <strong>CAPITAL, Loan, Support</strong>, etc., in the payment description due to Nigerian tax regulations.
+  </div>
 
-  <!-- First Merchant -->  
-  <div class="card">  
-    <h2>MERCHANT 1</h2>  
-    <h3>palmpay</h3>  
-    <p class="account-number">  
-      <span id="acct1">8092860734</span>  
-      <button class="copy-btn" onclick="copyText('8092860734', this)">Copy</button>  
-    </p>  
-    <p class="account-name">lucy abanum</p>  
-  </div>  
+  <p style="font-size:18px; font-weight:600; color:#333; margin-bottom:20px;">
+    For your selected package, transfer exactly 
+    <b>₦11,000</b>, <b>₦17,500</b>, or <b>₦28,500</b> 
+    to any of the accounts below for your coupon code registration.
+  </p>
 
-  <!-- Second Merchant -->  
-  <div class="card">  
-    <h2>MERCHANT 2</h2>  
-    <h3>FCMB BANK </h3>  
-    <p class="account-number">  
-      <span id="acct2">1036388934</span>  
-      <button class="copy-btn" onclick="copyText('1036388934', this)">Copy</button>  
-    </p>  
-    <p class="account-name">Divine Abanum</p>  
-    
+  <!-- First Merchant -->
+  <div class="card">
+    <h2>MERCHANT 1</h2>
+    <h3>palmpay</h3>
+    <p class="account-number">
+      <span id="acct1">8092860734</span>
+      <button class="copy-btn" onclick="copyText('8092860734', this)">Copy</button>
+    </p>
+    <p class="account-name">lucy abanum</p>
+  </div>
 
-  <!-- Verify -->  
-  <div class="verify-section">  
-    <p>Click the button below to verify your payment</p>  
-    <a href="https://t.me/Magnuspage?text=hello+I+just+made+my+payment+for+MAGNUS" target="_blank" class="verify-btn">✅ I have made the transfer</a>  
-  </div>  
+  <!-- Second Merchant -->
+  <div class="card">
+    <h2>MERCHANT 2</h2>
+    <h3>FCMB BANK</h3>
+    <p class="account-number">
+      <span id="acct2">1036388934</span>
+      <button class="copy-btn" onclick="copyText('1036388934', this)">Copy</button>
+    </p>
+    <p class="account-name">Divine Abanum</p>
+  </div>
 
-  <footer>  
-    © 2025 Magnus. All Rights Reserved.  
-  </footer>  
+  <!-- Verify -->
+  <div class="verify-section">
+    <p>Click the button below to verify your payment</p>
+    <a href="https://t.me/Magnuspage?text=hello+I+just+made+my+payment+for+MAGNUS" target="_blank" class="verify-btn">
+      ✅ I have made the transfer
+    </a>
+  </div>
 
-  <script>  
-    function copyText(account, button) {  
-      navigator.clipboard.writeText(account).then(() => {  
-        button.textContent = "Copied!";  
-        button.style.background = "#28a745";  
-        setTimeout(() => {  
-          button.textContent = "Copy";  
-          button.style.background = "#ff9900";  
-        }, 2000);  
-      }).catch(() => {  
-        // Fallback if clipboard API fails  
-        const tempInput = document.createElement("input");  
-        tempInput.value = account;  
-        document.body.appendChild(tempInput);  
-        tempInput.select();  
-        document.execCommand("copy");  
-        document.body.removeChild(tempInput);  
-        button.textContent = "Copied!";  
-        button.style.background = "#28a745";  
-        setTimeout(() => {  
-          button.textContent = "Copy";  
-          button.style.background = "#ff9900";  
-        }, 2000);  
-      });  
-    }  
-  </script>  
+  <footer>
+    © 2025 Magnus. All Rights Reserved.
+  </footer>
 
-</body>  
+  <script>
+    function copyText(account, button) {
+      navigator.clipboard.writeText(account).then(() => {
+        button.textContent = "Copied!";
+        button.style.background = "#28a745";
+        setTimeout(() => {
+          button.textContent = "Copy";
+          button.style.background = "#ff9900";
+        }, 2000);
+
+}).catch(() => {
+        // Fallback if clipboard API fails
+        const tempInput = document.createElement("input");
+        tempInput.value = account;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        button.textContent = "Copied!";
+        button.style.background = "#28a745";
+        setTimeout(() => {
+          button.textContent = "Copy";
+          button.style.background = "#ff9900";
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
