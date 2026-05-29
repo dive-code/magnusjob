@@ -575,8 +575,12 @@ body{
       Divine Abanum
     </div>
 
+    <!-- FIRST BUTTON -->
+    <!-- ONLY SHOW SUCCESS ALERT -->
+
     <button
-    class="action-btn">
+    class="action-btn"
+    onclick="paymentDone()">
 
       I've Completed My Payment
 
@@ -616,6 +620,9 @@ body{
       Divine Abanum
     </div>
 
+    <!-- SECOND BUTTON -->
+    <!-- GOES TO TELEGRAM -->
+
     <button
     class="action-btn"
     onclick="verifyPayment()">
@@ -629,7 +636,7 @@ body{
   <!-- FOOTER -->
 
   <div class="footer">
-    © 2026 Magnus. All Rights Reserved.
+    ©️ 2026 Magnus. All Rights Reserved.
   </div>
 
 </div>
@@ -667,7 +674,21 @@ button.innerHTML = "⧉";
 }
 
 /* =========================== */
-/* VERIFY */
+/* FIRST BUTTON */
+/* ONLY ALERT */
+/* =========================== */
+
+function paymentDone(){
+
+alert(
+"✅ Your payment has been submitted successfully. Please wait while we confirm your transfer."
+);
+
+}
+
+/* =========================== */
+/* SECOND BUTTON */
+/* TELEGRAM */
 /* =========================== */
 
 function verifyPayment(){
