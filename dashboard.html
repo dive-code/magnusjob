@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Magnus Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================== */
+/* GLOBAL */
+/* =========================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:"Poppins",sans-serif;
+
+  min-height:100vh;
+
+  overflow-x:hidden;
+
+  background:
+  radial-gradient(circle at top right,
+  rgba(255,153,0,0.16),
+  transparent 30%),
+
+  radial-gradient(circle at top left,
+  rgba(255,0,87,0.12),
+  transparent 35%),
+
+  #050505;
+
+  color:#fff;
+
+}
+
+/* =========================== */
+/* HEADER */
+/* =========================== */
+
+.header{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:24px 20px;
+
+}
+
+.logo{
+
+  font-size:38px;
+
+  font-weight:700;
+
+  background:
+  linear-gradient(to right,#ff9900,#ff0057);
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+.menu{
+
+  width:48px;
+  height:48px;
+
+  border-radius:16px;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:24px;
+
+  color:#ff9900;
+
+  backdrop-filter:blur(14px);
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.35);
+
+}
+
+/* =========================== */
+/* MAIN */
+/* =========================== */
+
+.main{
+
+  width:100%;
+
+  max-width:520px;
+
+  margin:auto;
+
+  padding:0 16px 100px;
+
+}
+
+/* =========================== */
+/* WELCOME */
+/* =========================== */
+
+.welcome{
+
+  margin-bottom:24px;
+
+}
+
+.welcome small{
+
+  color:#bdbdbd;
+
+  font-size:14px;
+
+}
+
+.welcome h1{
+
+  font-size:30px;
+
+  margin-top:6px;
+
+  line-height:1.4;
+
+}
+
+.name{
+
+  background:
+  linear-gradient(to right,#ff9900,#ff0057);
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  font-weight:700;
+
+}
+
+/* =========================== */
+/* BALANCE CARD */
+/* =========================== */
+
+.balance-card{
+
+  background:
+  linear-gradient(
+  135deg,
+  rgba(255,153,0,0.10),
+  rgba(255,0,87,0.08)
+  );
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  border-radius:36px;
+
+  padding:28px 24px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,0.45);
+
+}
+
+.balance-card::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:260px;
+  height:260px;
+
+  background:
+  rgba(255,255,255,0.04);
+
+  border-radius:50%;
+
+  top:-130px;
+  right:-130px;
+
+}
+
+.top-earnings{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:12px;
+
+  font-size:15px;
+
+  color:#d7d7d7;
+
+}
+
+.top-earnings span:last-child{
+
+  font-weight:700;
+
+  color:#fff;
+
+}
+
+.inner-card{
+
+  margin-top:20px;
+
+  background:
+  rgba(255,255,255,0.06);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  border-radius:28px;
+
+  padding:24px 22px;
+
+  backdrop-filter:blur(14px);
+
+}
+
+.inner-card h3{
+
+  font-size:16px;
+
+  margin-bottom:16px;
+
+  color:#fff;
+
+}
+
+.amount{
+
+  font-size:52px;
+
+  font-weight:700;
+
+  margin-bottom:24px;
+
+  background:
+  linear-gradient(
+  to right,
+  #ff9900,
+  #ff0057
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+.activate-btn{
+
+  width:100%;
+
+  border:none;
+
+  padding:18px;
+
+  border-radius:22px;
+
+  background:
+  linear-gradient(
+  to right,
+  #ff9900,
+  #ff0057
+  );
+
+  color:#fff;
+
+  font-size:17px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+  box-shadow:
+  0 15px 40px rgba(255,0,87,0.25);
+
+}
+
+.activate-btn:hover{
+
+  transform:
+  translateY(-2px);
+
+}
+
+/* =========================== */
+/* INFO BAR */
+/* =========================== */
+
+.info-bar{
+
+  margin-top:22px;
+
+  background:
+  rgba(255,255,255,0.04);
+
+  border:
+  1px solid rgba(255,255,255,0.06);
+
+  border-radius:22px;
+
+  padding:16px 18px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  backdrop-filter:blur(14px);
+
+}
+
+.info-box h4{
+
+  font-size:13px;
+
+  color:#aaa;
+
+  margin-bottom:4px;
+
+}
+
+.info-box p{
+
+  font-size:15px;
+
+  font-weight:700;
+
+  color:#fff;
+
+}
+
+/* =========================== */
+/* GRID */
+/* =========================== */
+
+.grid{
+
+  margin-top:24px;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(2,1fr);
+
+  gap:18px;
+
+}
+
+/* =========================== */
+/* CARD */
+/* =========================== */
+
+.card{
+
+  background:
+  rgba(255,255,255,0.04);
+
+  border:
+  1px solid rgba(255,255,255,0.06);
+
+  border-radius:28px;
+
+  padding:28px 18px;
+
+  text-align:center;
+
+  backdrop-filter:blur(14px);
+
+  transition:0.3s ease;
+
+  cursor:pointer;
+
+}
+
+.card:hover{
+
+  transform:
+  translateY(-4px);
+
+  border-color:
+  rgba(255,153,0,0.25);
+
+}
+
+.icon{
+
+  font-size:34px;
+
+  margin-bottom:14px;
+
+}
+
+.card h3{
+
+  font-size:16px;
+
+  line-height:1.5;
+
+  color:#fff;
+
+}
+
+.card p{
+
+  margin-top:10px;
+
+  font-size:13px;
+
+  color:#aaa;
+
+  line-height:1.6;
+
+}
+
+/* =========================== */
+/* TASK SECTION */
+/* =========================== */
+
+.task-box{
+
+  margin-top:28px;
+
+  background:
+  rgba(255,255,255,0.04);
+
+  border:
+  1px solid rgba(255,255,255,0.06);
+
+  border-radius:30px;
+
+  padding:24px;
+
+  backdrop-filter:blur(14px);
+
+}
+
+.task-box h2{
+
+  font-size:22px;
+
+  margin-bottom:12px;
+
+  color:#fff;
+
+}
+
+.task-box p{
+
+  color:#aaa;
+
+  line-height:1.8;
+
+  font-size:14px;
+
+}
+
+.task-btn{
+
+  display:inline-block;
+
+  margin-top:18px;
+
+  padding:14px 28px;
+
+  border-radius:40px;
+
+  background:
+  linear-gradient(
+  to right,
+  #ff9900,
+  #ff0057
+  );
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  font-size:14px;
+
+  box-shadow:
+  0 15px 40px rgba(255,0,87,0.25);
+
+}
+
+/* =========================== */
+/* FOOTER */
+/* =========================== */
+
+.footer{
+
+  text-align:center;
+
+  margin-top:40px;
+
+  font-size:13px;
+
+  color:#777;
+
+}
+
+/* =========================== */
+/* MOBILE */
+/* =========================== */
+
+@media(max-width:600px){
+
+  .logo{
+    font-size:32px;
+  }
+
+  .welcome h1{
+    font-size:25px;
+  }
+
+  .amount{
+    font-size:44px;
+  }
+
+  .grid{
+    gap:14px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+  <div class="logo">
+    MAGNUS
+  </div>
+
+  <div class="menu">
+    ☰
+  </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+  <!-- WELCOME -->
+
+  <div class="welcome">
+
+    <small>
+      Welcome back 👋
+    </small>
+
+    <h1>
+      Hello,
+      <span class="name" id="userName">
+        Magnus User
+      </span>
+    </h1>
+
+  </div>
+
+  <!-- BALANCE CARD -->
+
+  <div class="balance-card">
+
+    <div class="top-earnings">
+
+      <span>
+        Welcome Bonus
+      </span>
+
+      <span>
+        ₦27,500
+      </span>
+
+    </div>
+
+    <div class="top-earnings">
+
+      <span>
+        Account Status
+      </span>
+
+      <span id="statusText">
+        Pending Activation
+      </span>
+
+    </div>
+
+    <div class="inner-card">
+
+      <h3>
+        Available Earnings
+      </h3>
+
+      <div class="amount">
+        ₦27,500
+      </div>
+
+      <button
+      class="activate-btn"
+      onclick="goPayment()">
+        Activate Account
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- INFO BAR -->
+
+  <div class="info-bar">
+
+    <div class="info-box">
+      <h4>Amount Earned</h4>
+      <p>5,000 </p>
+    </div>
+
+    <div class="info-box">
+      <h4>Tasks Completed</h4>
+      <p>0/5</p>
+    </div>
+
+  </div>
+
+  <!-- GRID -->
+
+  <div class="grid">
+
+    <!-- WITHDRAW -->
+
+    <div
+    class="card"
+    onclick="goPayment()">
+
+      <div class="icon">
+        💳
+      </div>
+
+      <h3>
+        Withdraw Bonus
+      </h3>
+
+      <p>
+        Activate your account to unlock your welcome earnings.
+      </p>
+
+    </div>
+
+    <!-- SHARE -->
+
+    <div
+    class="card"
+    onclick="sharePost()">
+
+      <div class="icon">
+        📢
+      </div>
+
+      <h3>
+        Share Posts & Earn
+      </h3>
+
+      <p>
+        Earn 5000 points every hour when you share Magnus updates.
+      </p>
+
+    </div>
+
+    <!-- REWARD -->
+
+    <div class="card">
+
+      <div class="icon">
+        🎁
+      </div>
+
+      <h3>
+        Reward Center
+      </h3>
+
+      <p>
+        Access exclusive bonuses and premium member opportunities.
+      </p>
+
+    </div>
+
+    <!-- SECURITY -->
+
+    <div class="card">
+
+      <div class="icon">
+        🔒
+      </div>
+
+      <h3>
+        Account Security
+      </h3>
+
+      <p>
+        Your Magnus account is encrypted and fully secured.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- TASK BOX -->
+
+  <div class="task-box">
+
+    <h2>
+      Complete Your Activation
+    </h2>
+
+    <p>
+      Your Magnus dashboard has been created successfully.
+      Activate your account to unlock withdrawals,
+      collaborations, rewards and premium earning features.
+    </p>
+
+    <a
+    href="payment.html"
+    class="task-btn">
+      Proceed To Activation
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+    © 2026 Magnus. All Rights Reserved.
+  </div>
+
+</div>
+
+<script>
+
+/* =========================== */
+/* GET USER NAME */
+/* =========================== */
+
+const storedName =
+localStorage.getItem("magnusUserName");
+
+/* DISPLAY NAME */
+
+document.getElementById("userName")
+.textContent =
+storedName || "Magnus Member";
+
+/* =========================== */
+/* PAYMENT PAGE */
+/* =========================== */
+
+function goPayment(){
+
+window.location.href =
+"payment.html";
+
+}
+
+/* =========================== */
+/* SHARE POSTS */
+/* =========================== */
+
+function sharePost(){
+
+alert(
+"📢 Share Magnus promotional posts hourly and earn 5000 points after verification."
+);
+
+}
+
+/* =========================== */
+/* SAVE NAME FROM REGISTER */
+/* =========================== */
+
+/*
+ADD THIS TO YOUR REGISTER PAGE
+BEFORE REDIRECTING TO DASHBOARD:
+
+localStorage.setItem(
+'magnusUserName',
+document.getElementById('name').value
+);
+
+window.location.href = 'dashboard.html';
+
+*/
+
+</script>
+
+</body>
+</html>
