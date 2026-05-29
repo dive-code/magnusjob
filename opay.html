@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Magnus OPAY Payment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:"Poppins",sans-serif;
+
+  background:
+  linear-gradient(
+  135deg,
+  #050505,
+  #120012
+  );
+
+  min-height:100vh;
+
+  color:#fff;
+
+  padding:30px 18px;
+
+}
+
+.wrapper{
+
+  max-width:520px;
+
+  margin:auto;
+
+}
+
+.header{
+
+  text-align:center;
+
+  margin-bottom:30px;
+
+}
+
+.header h1{
+
+  font-size:40px;
+
+  background:
+  linear-gradient(
+  to right,
+  #ff9900,
+  #ff0057
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+.header p{
+
+  color:#ccc;
+
+  margin-top:10px;
+
+  line-height:1.7;
+
+}
+
+.notice{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  padding:18px;
+
+  border-radius:22px;
+
+  margin-bottom:25px;
+
+  line-height:1.8;
+
+  color:#ddd;
+
+  font-size:14px;
+
+}
+
+.payment-card{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border-radius:30px;
+
+  padding:30px 24px;
+
+  backdrop-filter:blur(15px);
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,0.30);
+
+}
+
+.payment-card h2{
+
+  color:#ff9900;
+
+  margin-bottom:15px;
+
+  letter-spacing:2px;
+
+}
+
+.bank{
+
+  font-size:32px;
+
+  font-weight:700;
+
+  margin-bottom:20px;
+
+}
+
+.account-number{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  padding:18px;
+
+  border-radius:18px;
+
+}
+
+.account-number span{
+
+  font-size:24px;
+
+  font-weight:700;
+
+}
+
+.copy-btn{
+
+  border:none;
+
+  width:50px;
+  height:50px;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(
+  to right,
+  #ff9900,
+  #ff0057
+  );
+
+  color:#fff;
+
+  font-size:18px;
+
+  cursor:pointer;
+
+}
+
+.account-name{
+
+  margin-top:18px;
+
+  color:#f8d28d;
+
+  font-size:20px;
+
+  font-weight:600;
+
+}
+
+.action-btn{
+
+  width:100%;
+
+  margin-top:25px;
+
+  border:none;
+
+  padding:18px;
+
+  border-radius:20px;
+
+  background:
+  linear-gradient(
+  to right,
+  #ff5a00,
+  #12003b
+  );
+
+  color:#fff;
+
+  font-size:18px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+}
+
+.footer{
+
+  text-align:center;
+
+  margin-top:30px;
+
+  color:#888;
+
+  font-size:13px;
+
+}
+
+@media(max-width:600px){
+
+  .header h1{
+    font-size:34px;
+  }
+
+  .account-number span{
+    font-size:20px;
+  }
+
+  .bank{
+    font-size:26px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <div class="header">
+
+    <h1>
+      OPAY Payment
+    </h1>
+
+    <p>
+      Your OPAY account has been assigned automatically.
+    </p>
+
+  </div>
+
+  <div class="notice">
+
+    ⚠️ OPAY users receive random accounts automatically
+    to reduce transfer delays and improve confirmation speed.
+
+  </div>
+
+  <div class="payment-card">
+
+    <h2>
+      ASSIGNED ACCOUNT
+    </h2>
+
+    <div
+    class="bank"
+    id="bankName">
+      OPAY
+    </div>
+
+    <div class="account-number">
+
+      <span id="accountNumber">
+      </span>
+
+      <button
+      class="copy-btn"
+      onclick="copyAccount()">
+
+        ⧉
+
+      </button>
+
+    </div>
+
+    <div
+    class="account-name"
+    id="accountName">
+    </div>
+
+    <button
+    class="action-btn"
+    onclick="verifyPayment()">
+
+      I've Completed My Payment
+
+    </button>
+
+  </div>
+
+  <div class="footer">
+    ©️ 2026 Magnus. All Rights Reserved.
+  </div>
+
+</div>
+
+<script>
+
+/* =========================== */
+/* RANDOM ACCOUNTS */
+/* =========================== */
+
+const accounts = [
+
+{
+  bank:"Moniepoint",
+  number:"916004991",
+  name:"Martins Abanum"
+},
+
+{
+  bank:"OPAY",
+  number:"8092860734",
+  name:"Martins Abanum"
+},
+
+{
+  bank:"OPAY",
+  number:"9160049921",
+  name:"Lucy Abanum"
+},
+
+{
+  bank:"PALMPAY",
+  number:"9160049921",
+  name:"Divine Abanum"
+}
+
+];
+
+/* =========================== */
+/* RANDOM PICK */
+/* =========================== */
+
+const randomAccount =
+accounts[
+Math.floor(
+Math.random() * accounts.length
+)
+];
+
+/* =========================== */
+/* DISPLAY */
+/* =========================== */
+
+document.getElementById(
+"bankName"
+).textContent =
+randomAccount.bank;
+
+document.getElementById(
+"accountNumber"
+).textContent =
+randomAccount.number;
+
+document.getElementById(
+"accountName"
+).textContent =
+randomAccount.name;
+
+/* =========================== */
+/* COPY */
+/* =========================== */
+
+function copyAccount(){
+
+navigator.clipboard.writeText(
+randomAccount.number
+);
+
+alert(
+"✅ Account number copied successfully"
+);
+
+}
+
+/* =========================== */
+/* VERIFY PAYMENT */
+/* =========================== */
+
+function verifyPayment(){
+
+window.open(
+"https://t.me/Magnusstaff?text=Hello+I+have+completed+my+Magnus+payment",
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
+</html>
