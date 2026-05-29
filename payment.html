@@ -126,6 +126,86 @@ body{
 }
 
 /* =========================== */
+/* OPAY NOTICE */
+/* =========================== */
+
+.opay-box{
+
+  background:
+  linear-gradient(
+  to right,
+  rgba(255,153,0,0.12),
+  rgba(255,0,87,0.12)
+  );
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  padding:20px;
+
+  border-radius:24px;
+
+  margin-bottom:24px;
+
+}
+
+.opay-box h3{
+
+  color:#ffb347;
+
+  margin-bottom:10px;
+
+  font-size:18px;
+
+}
+
+.opay-box p{
+
+  color:#ddd;
+
+  line-height:1.8;
+
+  font-size:14px;
+
+}
+
+/* =========================== */
+/* SMALL OPAY LINK */
+/* =========================== */
+
+.opay-link{
+
+  display:block;
+
+  text-align:right;
+
+  margin-top:12px;
+
+  color:#ffb347;
+
+  font-size:14px;
+
+  font-weight:800;
+
+  letter-spacing:0.5px;
+
+  text-decoration:none;
+
+  opacity:0.95;
+
+  transition:0.3s;
+
+}
+
+.opay-link:hover{
+
+  opacity:1;
+
+  color:#ffffff;
+
+}
+
+/* =========================== */
 /* PAYMENT CARD */
 /* =========================== */
 
@@ -194,11 +274,11 @@ body{
 
 .account-number span{
 
-  font-size:30px;
+  font-size:24px;
 
   font-weight:700;
 
-  letter-spacing:2px;
+  letter-spacing:1px;
 
 }
 
@@ -407,9 +487,6 @@ body{
 
   cursor:pointer;
 
-  box-shadow:
-  0 12px 30px rgba(255,90,0,0.25);
-
 }
 
 /* =========================== */
@@ -461,7 +538,7 @@ body{
   }
 
   .account-number span{
-    font-size:22px;
+    font-size:19px;
   }
 
   .bank{
@@ -493,8 +570,9 @@ body{
     </h2>
 
     <p>
-      For fastest confirmation, avoid OPAY.
-      Use Palmpay, Moniepoint,
+      For fastest confirmation,
+      avoid OPAY transfers if possible.
+      Use Moniepoint, Palmpay,
       POS transfers, or normal bank transfers.
     </p>
 
@@ -543,6 +621,30 @@ body{
 
   </div>
 
+  <!-- OPAY USERS -->
+
+  <div class="opay-box">
+
+    <h3>
+      OPAY USERS NOTICE
+    </h3>
+
+    <p>
+      If you only use OPAY,
+      click below to get
+      an assigned account automatically.
+    </p>
+
+    <a
+    class="opay-link"
+    href="opay.html">
+
+      OPAY USER?
+
+    </a>
+
+  </div>
+
   <!-- CARD 1 -->
 
   <div class="payment-card">
@@ -552,18 +654,18 @@ body{
     </h2>
 
     <div class="bank">
-      PALMPAY
+      MONIEPOINT
     </div>
 
     <div class="account-number">
 
-      <span id="acct1">     
-        7083688156
+      <span>
+        916004991
       </span>
 
       <button
       class="copy-btn"
-      onclick="copyText('7083688156',this)">
+      onclick="copyText('916004991',this)">
 
         ⧉
 
@@ -572,11 +674,8 @@ body{
     </div>
 
     <div class="account-name">
-      Divine Abanum
+      Martins Abanum
     </div>
-
-    <!-- FIRST BUTTON -->
-    <!-- ONLY SHOW SUCCESS ALERT -->
 
     <button
     class="action-btn"
@@ -597,18 +696,18 @@ body{
     </h2>
 
     <div class="bank">
-      FCMB BANK
+      PALMPAY
     </div>
 
     <div class="account-number">
 
-      <span id="acct2">
-        1036388934
+      <span>
+        9160049921
       </span>
 
       <button
       class="copy-btn"
-      onclick="copyText('1036388934',this)">
+      onclick="copyText('9160049921',this)">
 
         ⧉
 
@@ -619,9 +718,6 @@ body{
     <div class="account-name">
       Divine Abanum
     </div>
-
-    <!-- SECOND BUTTON -->
-    <!-- GOES TO TELEGRAM -->
 
     <button
     class="action-btn"
@@ -674,8 +770,7 @@ button.innerHTML = "⧉";
 }
 
 /* =========================== */
-/* FIRST BUTTON */
-/* ONLY ALERT */
+/* PAYMENT DONE */
 /* =========================== */
 
 function paymentDone(){
@@ -687,8 +782,7 @@ alert(
 }
 
 /* =========================== */
-/* SECOND BUTTON */
-/* TELEGRAM */
+/* VERIFY PAYMENT */
 /* =========================== */
 
 function verifyPayment(){
