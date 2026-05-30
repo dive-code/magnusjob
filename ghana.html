@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Magnus Ghana Checkout</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:
+radial-gradient(circle at top right,
+rgba(255,153,0,0.12),
+transparent 30%),
+#050505;
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+color:#fff;
+
+}
+
+.container{
+
+width:100%;
+max-width:600px;
+
+background:
+rgba(15,15,15,0.95);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+border-radius:28px;
+
+padding:30px;
+
+backdrop-filter:blur(20px);
+
+box-shadow:
+0 25px 80px rgba(0,0,0,0.6);
+
+}
+
+.brand{
+
+text-align:center;
+
+font-size:12px;
+
+letter-spacing:6px;
+
+font-weight:700;
+
+color:#ff9900;
+
+margin-bottom:12px;
+
+}
+
+h1{
+
+text-align:center;
+
+background:
+linear-gradient(to right,#ff9900,#ff0057);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+font-size:34px;
+
+margin-bottom:8px;
+
+}
+
+.sub{
+
+text-align:center;
+
+color:#aaa;
+
+font-size:14px;
+
+margin-bottom:25px;
+
+line-height:1.7;
+
+}
+
+.badge{
+
+display:flex;
+
+justify-content:center;
+
+margin-bottom:20px;
+
+}
+
+.badge span{
+
+background:
+rgba(0,255,136,0.08);
+
+border:
+1px solid rgba(0,255,136,0.2);
+
+padding:10px 18px;
+
+border-radius:50px;
+
+font-size:13px;
+
+color:#00ff88;
+
+font-weight:600;
+
+}
+
+.timer-card{
+
+background:
+rgba(255,77,109,0.08);
+
+border:
+1px solid rgba(255,77,109,0.2);
+
+padding:18px;
+
+border-radius:18px;
+
+text-align:center;
+
+margin-bottom:20px;
+
+}
+
+.timer-title{
+
+font-size:13px;
+
+color:#bbb;
+
+margin-bottom:6px;
+
+}
+
+.timer{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#ff4d6d;
+
+}
+
+.card{
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+padding:18px;
+
+border-radius:18px;
+
+margin-bottom:18px;
+
+}
+
+.card-title{
+
+font-size:15px;
+
+font-weight:600;
+
+color:#ff9900;
+
+margin-bottom:12px;
+
+}
+
+.info{
+
+line-height:1.9;
+
+font-size:14px;
+
+color:#ddd;
+
+}
+
+.info strong{
+
+color:#fff;
+
+}
+
+.amount{
+
+font-size:26px;
+
+font-weight:700;
+
+color:#00ff88;
+
+margin-top:10px;
+
+}
+
+.bank-row{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:10px 0;
+
+border-bottom:
+1px solid rgba(255,255,255,0.05);
+
+font-size:14px;
+
+}
+
+.bank-row:last-child{
+
+border-bottom:none;
+
+}
+
+.label{
+
+color:#999;
+
+}
+
+.value{
+
+font-weight:600;
+
+color:#fff;
+
+}
+.copy-btn{
+
+width:100%;
+
+margin-top:15px;
+
+padding:14px;
+
+border:none;
+
+border-radius:14px;
+
+cursor:pointer;
+
+font-weight:600;
+
+background:
+rgba(255,153,0,0.12);
+
+color:#ff9900;
+
+transition:.3s;
+
+}
+
+.copy-btn:hover{
+
+background:
+rgba(255,153,0,0.18);
+
+}
+
+.pay-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:40px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:700;
+
+color:#fff;
+
+background:
+linear-gradient(to right,#ff9900,#ff0057);
+
+margin-top:15px;
+
+box-shadow:
+0 15px 40px rgba(255,0,87,0.25);
+
+}
+
+.notice{
+
+background:
+rgba(255,153,0,0.08);
+
+border:
+1px solid rgba(255,153,0,0.15);
+
+padding:16px;
+
+border-radius:16px;
+
+font-size:13px;
+
+line-height:1.8;
+
+color:#ccc;
+
+margin-top:18px;
+
+}
+
+.success{
+
+display:none;
+
+margin-top:20px;
+
+padding:16px;
+
+border-radius:16px;
+
+background:
+rgba(0,255,136,0.08);
+
+border:
+1px solid rgba(0,255,136,0.2);
+
+text-align:center;
+
+color:#00ff88;
+
+font-weight:600;
+
+}
+
+@media(max-width:768px){
+
+.container{
+
+padding:22px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+.timer{
+
+font-size:24px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="brand">
+MAGNUS
+</div>
+
+<h1>Ghana Checkout</h1>
+
+<div class="sub">
+Complete your activation payment to unlock your Magnus account and rewards.
+</div>
+
+<div class="badge">
+<span>🔒 Secure Payment Session</span>
+</div>
+
+<div class="timer-card">
+
+<div class="timer-title">
+Payment session expires in
+</div>
+
+<div class="timer" id="time">
+15:00
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+Selected Plan
+</div>
+
+<div class="info" id="planBox">
+Loading...
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="card-title">
+📱 Vodafone Cash Payment Details
+</div>
+
+<div class="bank-row">
+<span class="label">Mobile Money Provider</span>
+<span class="value">Vodafone Cash</span>
+</div>
+
+<div class="bank-row">
+<span class="label">Payment Number</span>
+<span class="value" id="accountNumber">201085948</span>
+</div>
+
+<div class="bank-row">
+<span class="label">Account Holder</span>
+<span class="value">HAYFORD KWARTENG</span>
+</div>
+
+<button class="copy-btn" onclick="copyAccount()">
+📋 Copy Payment Number
+</button>
+
+</div>
+
+<div class="notice">
+
+⚠️ Ensure you transfer the exact amount shown above.
+
+<br><br>
+
+Your account activation may be delayed if a different amount is paid.
+
+</div>
+
+<button class="pay-btn" id="paidBtn">
+✅ I Have Made Payment
+</button>
+
+<div class="success" id="success">
+✅ Payment submitted successfully. Redirecting...
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+
+const pricing = {
+Lite: "₵185",
+Pro: "₵295",
+Business: "₵400"
+};
+
+const planBox = document.getElementById("planBox");
+
+if (!plan || !pricing[plan]) {
+
+planBox.innerHTML =
+"<span style='color:#ff4d6d;'>Invalid plan selected.</span>";
+
+document.getElementById("paidBtn").disabled = true;
+
+} else {
+
+planBox.innerHTML = `
+<strong>Magnus ${plan}</strong>
+<br>
+<div class="amount">${pricing[plan]}</div>
+`;
+
+}
+
+/* ========================= */
+/* COPY ACCOUNT NUMBER */
+/* ========================= */
+
+function copyAccount() {
+
+const acc = document.getElementById("accountNumber").innerText;
+
+navigator.clipboard.writeText(acc);
+
+alert("Account number copied");
+
+}
+
+/* ========================= */
+/* TIMER COUNTDOWN */
+/* ========================= */
+
+let time = 15 * 60;
+
+const timerEl = document.getElementById("time");
+
+const countdown = setInterval(() => {
+
+let minutes = Math.floor(time / 60);
+let seconds = time % 60;
+
+timerEl.textContent =
+`${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+time--;
+
+if (time < 0) {
+
+clearInterval(countdown);
+
+timerEl.textContent = "EXPIRED";
+
+document.getElementById("paidBtn").disabled = true;
+document.getElementById("paidBtn").style.opacity = ".5";
+
+}
+
+}, 1000);
+
+/* ========================= */
+/* PAYMENT BUTTON ACTION */
+/* ========================= */
+
+document.getElementById("paidBtn").addEventListener("click", () => {
+
+const url =
+"https://t.me/magnusstaff?text=I%20have%20made%20payment%20here%20is%20my%20proof";
+
+/* show message first */
+document.getElementById("success").style.display = "block";
+
+/* small delay BUT still user-gesture safe */
+setTimeout(() => {
+
+window.location.href = url;
+
+}, 300);
+
+});
+</script>
+
+</div>
+
+</body>
+</html>
