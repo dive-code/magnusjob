@@ -773,7 +773,6 @@ body{
 
 </div>
 
-  
 <script>
 
 /* =========================== */
@@ -783,58 +782,11 @@ body{
 const storedName =
 localStorage.getItem("magnusUserName");
 
-/* DISPLAY NAME */
-
 document.getElementById("userName")
 .textContent =
 storedName || "Magnus Member";
 
 /* =========================== */
-/* PAYMENT PAGE */
-/* =========================== */
-
-function goPayment(){
-
-window.location.href =
-"payment.html";
-
-}
-
-/* =========================== */
-/* SHARE POSTS */
-/* =========================== */
-
-function sharePost(){
-
-alert(
-"📢 Share Magnus promotional posts hourly and earn 5000 points after verification."
-);
-
-}
-
-/* =========================== */
-/* SAVE NAME FROM REGISTER */
-/* =========================== */
-
-/*
-ADD THIS TO YOUR REGISTER PAGE
-BEFORE REDIRECTING TO DASHBOARD:
-
-localStorage.setItem(
-'magnusUserName',
-document.getElementById('name').value
-);
-
-window.location.href = 'dashboard.html';
-
-*/
-
-
-  document.getElementById("userName")
-.textContent =
-storedName || "Magnus Member";
-
-  /* =========================== */
 /* PLAN AMOUNT */
 /* =========================== */
 
@@ -866,8 +818,30 @@ document.getElementById("bonusAmount")
 
 document.getElementById("activateAmount")
 .textContent = dashboardAmount;
-  
-</script>
 
+/* =========================== */
+/* PAYMENT PAGE */
+/* =========================== */
+
+function goPayment(){
+
+window.location.href =
+"payment.html";
+
+}
+
+/* =========================== */
+/* SHARE POSTS */
+/* =========================== */
+
+function sharePost(){
+
+alert(
+"📢 Share Magnus promotional posts hourly and earn 5000 points after verification."
+);
+
+}
+
+</script>
 </body>
 </html>
