@@ -314,6 +314,9 @@ select:focus{
 
   border-radius:14px;
 
+  background:
+  rgba(255,255,255,0.03);
+
   border:
   1px solid rgba(255,255,255,0.05);
 
@@ -634,7 +637,8 @@ Already have an account?
 </div>
 
 <script>
-  /* ======================================= */
+
+/* ======================================= */
 /* COUNTRY DATA */
 /* ======================================= */
 
@@ -703,38 +707,33 @@ Business:"$40"
 const paymentLinks = {
 
 Ghana: {
-Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+Lite: "https://selar.co/ghana-all-plans",
+Pro: "https://selar.co/ghana-all-plans",
+Business: "https://selar.co/ghana-all-plans"
 },
 
 Kenya: {
-Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business: "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+Lite: "https://selar.co/kenya-all-plans",
+Pro: "https://selar.co/kenya-all-plans",
+Business: "https://selar.co/kenya-all-plans"
 },
 
 Cameroon: {
-Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business: "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+Lite: "https://selar.co/cameroon-all-plans",
+Pro: "https://selar.co/cameroon-all-plans",
+Business: "https://selar.co/cameroon-all-plans"
 },
 
 "South Africa": {
-Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business:  "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+Lite: "https://selar.co/sa-all-plans",
+Pro: "https://selar.co/sa-all-plans",
+Business: "https://selar.co/sa-all-plans"
 },
 
 Other: {
-Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business:  "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+Lite: "https://selar.co/international-all-plans",
+Pro: "https://selar.co/international-all-plans",
+Business: "https://selar.co/international-all-plans"
 }
 
 };
@@ -776,7 +775,7 @@ return;
 }
 
 plan.innerHTML =
-<option value="">Choose your Magnus Plan</option>;
+`<option value="">Choose your Magnus Plan</option>`;
 
 if(data[selectedCountry]){
 
@@ -830,6 +829,7 @@ ${data[selectedCountry].plans[selectedPlan]}<br><br>
 
 🎁 Reward:
 ${data[selectedCountry].bonus}<br><br>
+
 • Premium digital access<br>
 • Secure member onboarding<br>
 • Participation reward system<br>
@@ -915,23 +915,9 @@ setTimeout(() => {
 if(selectedCountry === "Nigeria"){
 
 window.location.href =
-`dashboard.html?plan=${selectedPlan}`;
+`payment.html?plan=${selectedPlan}`;
 
 }
-  
-
-  
-    else if(selectedCountry === "Ghana"){
-  
-
-  
-      window.location.href =
-  
-      "ghana.html?plan=" + selectedPlan;
-  
-
-  
-    }
 
 /* OTHER COUNTRIES */
 
@@ -951,6 +937,4 @@ window.location.href = link;
 </script>
 
 </body>
-</html>background:
-  rgba(255,255,255,0.03);
-  
+</html>
