@@ -1436,19 +1436,24 @@ document.getElementById("form")
   
   setTimeout(function(){
   
+/* NIGERIA */
 
-  
-    if(selectedCountry === "Nigeria"){
-  
+if(selectedCountry === "Nigeria"){
 
-  
-      window.location.href =
-  
-      "dashboard.html?plan=" + selectedPlan;
-  
+localStorage.setItem(
+"magnusPlan",
+selectedPlan
+);
 
-  
-    }
+localStorage.setItem(
+"magnusUserName",
+document.getElementById("name").value
+);
+
+window.location.href =
+dashboard.html?plan=${selectedPlan};
+
+}
   
 
   
