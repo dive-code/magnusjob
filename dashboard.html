@@ -345,7 +345,6 @@ body{
 .info-box h4{
 
   font-size:13px;
-
   color:#aaa;
 
   margin-bottom:4px;
@@ -608,9 +607,9 @@ body{
         Welcome Bonus
       </span>
 
-     <span id="bonusAmount">
-  ₦27,500
-</span>
+      <span>
+        ₦27,500
+      </span>
 
     </div>
 
@@ -632,9 +631,10 @@ body{
         Available Earnings
       </h3>
 
-     <div class="amount" id="activateAmount">
-  ₦27,500
-</div>
+      <div class="amount">
+        ₦27,500
+      </div>
+
       <button
       class="activate-btn"
       onclick="goPayment()">
@@ -700,7 +700,7 @@ body{
       </h3>
 
       <p>
-        Earn 5000 every hour when you share Magnus updates.
+        Earn 5000 points every hour when you share Magnus updates.
       </p>
 
     </div>
@@ -716,7 +716,6 @@ body{
       <h3>
         Reward Center
       </h3>
-
       <p>
         Access exclusive bonuses and premium member opportunities.
       </p>
@@ -782,42 +781,11 @@ body{
 const storedName =
 localStorage.getItem("magnusUserName");
 
+/* DISPLAY NAME */
+
 document.getElementById("userName")
 .textContent =
 storedName || "Magnus Member";
-
-/* =========================== */
-/* PLAN AMOUNT */
-/* =========================== */
-
-const selectedPlan =
-localStorage.getItem("magnusPlan");
-
-let dashboardAmount = "₦27,500";
-
-if(selectedPlan === "Lite"){
-
-  dashboardAmount = "₦7,500";
-
-}
-
-else if(selectedPlan === "Pro"){
-
-  dashboardAmount = "₦11,500";
-
-}
-
-else if(selectedPlan === "Business"){
-
-  dashboardAmount = "₦27,500";
-
-}
-
-document.getElementById("bonusAmount")
-.textContent = dashboardAmount;
-
-document.getElementById("activateAmount")
-.textContent = dashboardAmount;
 
 /* =========================== */
 /* PAYMENT PAGE */
@@ -842,6 +810,24 @@ alert(
 
 }
 
+/* =========================== */
+/* SAVE NAME FROM REGISTER */
+/* =========================== */
+
+/*
+ADD THIS TO YOUR REGISTER PAGE
+BEFORE REDIRECTING TO DASHBOARD:
+
+localStorage.setItem(
+'magnusUserName',
+document.getElementById('name').value
+);
+
+window.location.href = 'dashboard.html';
+
+*/
+
 </script>
+
 </body>
 </html>
