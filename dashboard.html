@@ -608,9 +608,9 @@ body{
         Welcome Bonus
       </span>
 
-      <span>
-        $27,500
-      </span>
+     <span id="bonusAmount">
+  ₦27,500
+</span>
 
     </div>
 
@@ -632,10 +632,9 @@ body{
         Available Earnings
       </h3>
 
-      <div class="amount">
-        ₦27,500
-      </div>
-
+     <div class="amount" id="activateAmount">
+  ₦27,500
+</div>
       <button
       class="activate-btn"
       onclick="goPayment()">
@@ -774,6 +773,7 @@ body{
 
 </div>
 
+  
 <script>
 
 /* =========================== */
@@ -829,6 +829,44 @@ window.location.href = 'dashboard.html';
 
 */
 
+
+  document.getElementById("userName")
+.textContent =
+storedName || "Magnus Member";
+
+  /* =========================== */
+/* PLAN AMOUNT */
+/* =========================== */
+
+const selectedPlan =
+localStorage.getItem("magnusPlan");
+
+let dashboardAmount = "₦27,500";
+
+if(selectedPlan === "Lite"){
+
+  dashboardAmount = "₦7,500";
+
+}
+
+else if(selectedPlan === "Pro"){
+
+  dashboardAmount = "₦11,500";
+
+}
+
+else if(selectedPlan === "Business"){
+
+  dashboardAmount = "₦27,500";
+
+}
+
+document.getElementById("bonusAmount")
+.textContent = dashboardAmount;
+
+document.getElementById("activateAmount")
+.textContent = dashboardAmount;
+  
 </script>
 
 </body>
