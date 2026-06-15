@@ -1,1457 +1,921 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Magnus | Register</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
-  
+<!DOCTYPE html>
+<html lang="en">
 
-  
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Magnus | Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
 /* ======================================= */
-  
 /* GLOBAL */
-  
 /* ======================================= */
-  
 
-  
 *{
-  
   margin:0;
-  
   padding:0;
-  
   box-sizing:border-box;
-  
 }
-  
 
-  
 body{
-  
 
-  
   font-family:"Poppins",sans-serif;
-  
 
-  
   min-height:100vh;
-  
 
-  
   display:flex;
-  
   justify-content:center;
-  
   align-items:center;
-  
 
-  
   padding:30px 20px;
-  
 
-  
   background:
-  
   radial-gradient(circle at top right,
-  
   rgba(255,153,0,0.15),
-  
   transparent 30%),
-  
   #050505;
-  
 
-  
   color:#fff;
-  
 
-  
   overflow-x:hidden;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* BACKGROUND GLOW */
-  
 /* ======================================= */
-  
 
-  
 .bg-glow{
-  
 
-  
   position:fixed;
-  
   inset:0;
-  
 
-  
   background:
-  
   radial-gradient(circle at top left,
-  
   rgba(255,0,87,0.12),
-  
   transparent 35%);
-  
 
-  
   pointer-events:none;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* MAIN CARD */
-  
 /* ======================================= */
-  
 
-  
 .container{
-  
 
-  
   width:100%;
-  
   max-width:520px;
-  
 
-  
   position:relative;
-  
 
-  
   background:
-  
   rgba(10,10,10,0.92);
-  
 
-  
   border:
-  
   1px solid rgba(255,255,255,0.06);
-  
 
-  
   border-radius:28px;
-  
 
-  
   padding:36px 30px;
-  
 
-  
   backdrop-filter:blur(18px);
-  
 
-  
   box-shadow:
-  
   0 25px 70px rgba(0,0,0,0.65);
-  
 
-  
   overflow:hidden;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* CARD GLOW */
-  
 /* ======================================= */
-  
 
-  
 .container::before{
-  
 
-  
   content:"";
-  
 
-  
   position:absolute;
-  
   inset:0;
-  
 
-  
   background:
-  
   linear-gradient(
-  
   135deg,
-  
   rgba(255,153,0,0.08),
-  
   rgba(255,0,87,0.04),
-  
   transparent
-  
   );
-  
 
-  
   pointer-events:none;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* BRAND */
-  
 /* ======================================= */
-  
 
-  
 .brand{
-  
 
-  
   text-align:center;
-  
 
-  
   font-size:12px;
-  
 
-  
   letter-spacing:7px;
-  
 
-  
   color:#ff9900;
-  
 
-  
   font-weight:600;
-  
 
-  
   margin-bottom:14px;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* HEADER */
-  
 /* ======================================= */
-  
 
-  
 h1{
-  
 
-  
   text-align:center;
-  
 
-  
   font-size:32px;
-  
 
-  
   margin-bottom:10px;
-  
 
-  
   background:
-  
   linear-gradient(to right,#ff9900,#ff0057);
-  
 
-  
   -webkit-background-clip:text;
-  
   -webkit-text-fill-color:transparent;
-  
 
-  
 }
-  
 
-  
 .sub{
-  
 
-  
   text-align:center;
-  
 
-  
   font-size:15px;
-  
 
-  
   color:#aaa;
-  
 
-  
   line-height:1.7;
-  
 
-  
   margin-bottom:8px;
-  
 
-  
 }
-  
 
-  
 .tagline{
-  
 
-  
   text-align:center;
-  
 
-  
   color:#ff9900;
-  
 
-  
   font-size:14px;
-  
 
-  
   font-weight:500;
-  
 
-  
   margin-bottom:24px;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* PROMO BOX */
-  
 /* ======================================= */
-  
 
-  
 .promo{
-  
 
-  
   position:relative;
-  
 
-  
   background:
-  
   rgba(255,153,0,0.08);
-  
 
-  
   border:
-  
   1px solid rgba(255,153,0,0.18);
-  
 
-  
   padding:16px;
-  
 
-  
   border-radius:18px;
-  
 
-  
   text-align:center;
-  
 
-  
   line-height:1.7;
-  
 
-  
   font-size:14px;
-  
 
-  
   color:#fff;
-  
 
-  
   margin-bottom:24px;
-  
 
-  
 }
-  
 
-  
 .promo strong{
-  
   color:#ff9900;
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* FORM */
-  
 /* ======================================= */
-  
 
-  
 form{
-  
   position:relative;
-  
   z-index:2;
-  
 }
-  
 
-  
 label{
-  
 
-  
   display:block;
-  
 
-  
   margin-top:16px;
-  
   margin-bottom:8px;
-  
 
-  
   font-size:13px;
-  
 
-  
   color:#bdbdbd;
-  
 
-  
   font-weight:500;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* INPUTS */
-  
 /* ======================================= */
-  
 
-  
 .input-box{
-  
   position:relative;
-  
 }
-  
 
-  
 input,
-  
 select{
-  
 
-  
   width:100%;
-  
 
-  
   padding:15px 16px;
-  
 
-  
   border-radius:14px;
-  
 
-  
   border:
-  
   1px solid rgba(255,255,255,0.06);
-  
 
-  
   background:
-  
   rgba(255,255,255,0.03);
-  
 
-  
   color:#fff;
-  
 
-  
   outline:none;
-  
 
-  
   font-size:14px;
-  
 
-  
   transition:0.3s ease;
-  
 
-  
 }
-  
 
-  
 select{
-  
   cursor:pointer;
-  
 }
-  
 
-  
 option{
-  
   background:#111;
-  
   color:#fff;
-  
 }
-  
 
-  
 input::placeholder{
-  
   color:#777;
-  
 }
-  
 
-  
 input:focus,
-  
 select:focus{
-  
 
-  
   border-color:#ff9900;
-  
 
-  
   box-shadow:
-  
   0 0 0 4px rgba(255,153,0,0.08);
-  
 
-  
   background:
-  
   rgba(255,255,255,0.04);
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* PLAN INFO */
-  
 /* ======================================= */
-  
 
-  
 .plan-info{
-  
 
-  
   margin-top:14px;
-  
 
-  
   padding:14px;
-  
 
-  
   border-radius:14px;
-  
 
-  
-  background:
-  
-  rgba(255,255,255,0.03);
-  
-
-  
   border:
-  
   1px solid rgba(255,255,255,0.05);
-  
 
-  
   font-size:13px;
-  
 
-  
   line-height:1.8;
-  
 
-  
   color:#bbb;
-  
 
-  
 }
-  
 
-  
 .plan-info strong{
-  
   color:#ff9900;
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* BUTTON */
-  
 /* ======================================= */
-  
 
-  
 button{
-  
 
-  
   width:100%;
-  
 
-  
   margin-top:28px;
-  
 
-  
   border:none;
-  
 
-  
   padding:16px;
-  
 
-  
   border-radius:40px;
-  
 
-  
   font-size:15px;
-  
 
-  
   font-weight:600;
-  
 
-  
   cursor:pointer;
-  
 
-  
   color:#fff;
-  
 
-  
   background:
-  
   linear-gradient(to right,#ff9900,#ff0057);
-  
 
-  
   transition:0.3s ease;
-  
 
-  
   box-shadow:
-  
   0 14px 40px rgba(255,0,87,0.22);
-  
 
-  
 }
-  
 
-  
 button:hover{
-  
 
-  
   transform:
-  
   translateY(-3px);
-  
 
-  
   box-shadow:
-  
   0 18px 45px rgba(255,0,87,0.28);
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* LOGIN */
-  
 /* ======================================= */
-  
 
-  
 .login{
-  
 
-  
   text-align:center;
-  
 
-  
   margin-top:20px;
-  
 
-  
   font-size:14px;
-  
 
-  
   color:#999;
-  
 
-  
 }
-  
 
-  
 .login a{
-  
 
-  
   color:#ff9900;
-  
 
-  
   text-decoration:none;
-  
 
-  
   font-weight:600;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* ERRORS */
-  
 /* ======================================= */
-  
 
-  
 .error{
-  
 
-  
   display:none;
-  
 
-  
   margin-top:7px;
-  
 
-  
   font-size:12px;
-  
 
-  
   color:#ff4d6d;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* SUCCESS */
-  
 /* ======================================= */
-  
 
-  
 .success{
-  
 
-  
   display:none;
-  
 
-  
   margin-top:18px;
-  
 
-  
   text-align:center;
-  
 
-  
   padding:14px;
-  
 
-  
   border-radius:14px;
-  
 
-  
   background:
-  
   rgba(0,255,136,0.08);
-  
 
-  
   border:
-  
   1px solid rgba(0,255,136,0.18);
-  
 
-  
   color:#00ff88;
-  
 
-  
   font-size:14px;
-  
 
-  
 }
-  
 
-  
 /* ======================================= */
-  
 /* MOBILE */
-  
 /* ======================================= */
-  
 
-  
 @media(max-width:768px){
-  
 
-  
   .container{
-  
 
-  
     padding:28px 20px;
-  
 
-  
     border-radius:22px;
-  
 
-  
   }
-  
 
-  
   h1{
-  
     font-size:28px;
-  
   }
-  
 
-  
 }
-  
 
-  
-</style></head><body><div class="bg-glow"></div><div class="container"><div class="brand">MAGNUS
+</style>
 
-</div><h1>Create Account</h1><div class="sub">Start your digital journey with Magnus today
+</head>
 
-</div><div class="tagline">Experience Premium Digital Opportunities
+<body>
 
-</div><div class="promo" id="promoBox">🎉 Activate your account today and unlock
+<div class="bg-glow"></div>
 
+<div class="container">
+
+<div class="brand">
+MAGNUS
+</div>
+
+<h1>Create Account</h1>
+
+<div class="sub">
+Start your digital journey with Magnus today
+</div>
+
+<div class="tagline">
+Experience Premium Digital Opportunities
+</div>
+
+<div class="promo" id="promoBox">
+🎉 Activate your account today and unlock
 <strong>bonus rewards</strong>
-
 after successful participation.
+</div>
 
-</div><form id="form"><label>Full Name</label>
+<form id="form">
 
-<div class="input-box"><input
+<label>Full Name</label>
 
+<div class="input-box">
+<input
 type="text"
-
 id="name"
-
 placeholder="Enter your full name"
-
 required>
+</div>
 
-</div><label>Email Address</label>
+<label>Email Address</label>
 
-<div class="input-box"><input
-
+<div class="input-box">
+<input
 type="email"
-
 id="email"
-
 placeholder="Enter your email address"
-
 required>
+</div>
 
-</div><div class="error" id="emailErr">Please enter a valid email address
+<div class="error" id="emailErr">
+Please enter a valid email address
+</div>
 
-</div><label>Phone Number</label>
+<label>Phone Number</label>
 
-<div class="input-box"><input
-
+<div class="input-box">
+<input
 type="tel"
-
 id="phone"
-
 placeholder="Enter your phone number"
-
 required>
+</div>
 
-</div><label>Select Country</label>
+<label>Select Country</label>
 
-<div class="input-box"><select id="country" required><option value="">Choose your country
+<div class="input-box">
 
-</option><option value="Nigeria">Nigeria
+<select id="country" required>
 
-</option><option value="Ghana">Ghana
+<option value="">
+Choose your country
+</option>
 
-</option><option value="Cameroon">Cameroon
+<option value="Nigeria">
+Nigeria
+</option>
 
-</option><option value="Request MoMo">Request Direct MoMo Account
+<option value="Ghana">
+Ghana
+</option>
 
-</option><option value="Kenya">Kenya
+<option value="Cameroon">
+Cameroon
+</option>
 
-</option><option value="South Africa">South Africa
+<option value="Request MoMo">
+Request Direct MoMo Account
+</option>
 
-</option><option value="Other">Other Countries
+<option value="Kenya">
+Kenya
+</option>
 
-</option></select></div><label>Select Preferred Plan</label>
+<option value="South Africa">
+South Africa
+</option>
 
-<div class="input-box"><select id="plan" required><option value="">Choose your Magnus Plan
+<option value="Other">
+Other Countries
+</option>
 
-</option></select></div><div class="plan-info" id="planInfo"><strong>Select your country first</strong><br>
+</select>
 
+</div>
+
+<label>Select Preferred Plan</label>
+
+<div class="input-box">
+
+<select id="plan" required>
+
+<option value="">
+Choose your Magnus Plan
+</option>
+
+</select>
+
+</div>
+
+<div class="plan-info" id="planInfo">
+
+<strong>Select your country first</strong><br>
 Your country pricing and available plans will appear here.
 
-</div><label>Password</label>
+</div>
 
-<div class="input-box"><input
+<label>Password</label>
 
+<div class="input-box">
+<input
 type="password"
-
 id="password"
-
 placeholder="Create your password"
-
 required>
+</div>
 
-</div><label>Confirm Password</label>
+<label>Confirm Password</label>
 
-<div class="input-box"><input
-
+<div class="input-box">
+<input
 type="password"
-
 id="confirm"
-
 placeholder="Confirm your password"
-
 required>
+</div>
 
-</div><div class="error" id="passErr">Passwords do not match
+<div class="error" id="passErr">
+Passwords do not match
+</div>
 
-</div><button type="submit">Create Account & Continue
+<button type="submit">
+Create Account & Continue
+</button>
 
-</button><div class="success" id="successBox">✅ Redirecting to secure payment...
+<div class="success" id="successBox">
+✅ Redirecting to secure payment...
+</div>
 
-</div></form></div><script>
-  
+</form>
 
-  
-/* ======================================= */
-  
+<div class="login">
+Already have an account?
+<a href="login.html">Login</a>
+</div>
+
+</div>
+
+<script>
+  /* ======================================= */
 /* COUNTRY DATA */
-  
 /* ======================================= */
-  
 
-  
 const data = {
-  
 
-  
-  Nigeria: {
-  
-    bonus: "₦27,500 bonus credit",
-  
-    plans: {
-  
-      Lite:"₦11,500",
-  
-      Pro:"₦17,500",
-  
-      Business:"₦28,500"
-  
-    }
-  
-  },
-  
+Nigeria: {
+bonus: "₦27,500 bonus credit",
+plans: {
+Lite:"₦11,500",
+Pro:"₦17,500",
+Business:"₦28,500"
+}
+},
 
-  
-  Ghana: {
-  
-    bonus: "₵275 bonus credit",
-  
-    plans: {
-  
-      Lite:"₵185",
-  
-      Pro:"₵295",
-  
-      Business:"₵400"
-  
-    }
-  
-  },
-  
+Ghana: {
+bonus: "₵275 bonus credit",
+plans: {
+Lite:"₵185",
+Pro:"₵295",
+Business:"₵400"
+}
+},
 
-  
-  Kenya: {
-  
-    bonus: "KES 2,750 bonus credit",
-  
-    plans: {
-  
-      Lite:"KES 1,800",
-  
-      Pro:"KES 2,600",
-  
-      Business:"KES 3,800"
-  
-    }
-  
-  },
-  
+Kenya: {
+bonus: "KES 2,750 bonus credit",
+plans: {
+Lite:"KES 1,800",
+Pro:"KES 2,600",
+Business:"KES 3,800"
+}
+},
 
-  
-  Cameroon: {
-  
-    bonus: "XAF 27,500 bonus credit",
-  
-    plans: {
-  
-      Lite:"XAF 8,500",
-  
-      Pro:"XAF 13,500",
-  
-      Business:"XAF 22,500"
-  
-    }
-  
-  },
-  
+Cameroon: {
+bonus: "XAF 27,500 bonus credit",
+plans: {
+Lite:"XAF 8,500",
+Pro:"XAF 13,500",
+Business:"XAF 22,500"
+}
+},
 
-  
-  "South Africa": {
-  
-    bonus: "ZAR 275 bonus credit",
-  
-    plans: {
-  
-      Lite:"ZAR 280",
-  
-      Pro:"ZAR 400",
-  
-      Business:"ZAR 520"
-  
-    }
-  
-  },
-  
+"South Africa": {
+bonus: "ZAR 275 bonus credit",
+plans: {
+Lite:"ZAR 280",
+Pro:"ZAR 400",
+Business:"ZAR 520"
+}
+},
 
-  
-  Other: {
-  
-    bonus: "International bonus access",
-  
-    plans: {
-  
-      Lite:"$15",
-  
-      Pro:"$25",
-  
-      Business:"$40"
-  
-    }
-  
-  }
-  
+Other: {
+bonus: "International bonus access",
+plans: {
+Lite:"$15",
+Pro:"$25",
+Business:"$40"
+}
+}
 
-  
 };
-  
 
-  
+/* ======================================= */
+/* PAYMENT LINKS */
+/* ======================================= */
+
 const paymentLinks = {
-  
 
-  
-  Kenya: {
-  
-    Lite:  "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-  
-    Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-  
-    Business: "https://t.me/magnusstaff=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-  
-  },
-  
+Ghana: {
+Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
 
-  
-  Cameroon: {
-  
-    Lite:"https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-  
-    Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-  
-    Business: "https://t.me/magnusstaff=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-  
-  },
-  
+},
 
-  
-  "South Africa": {
-  
-    Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-  
-    Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-  
-    Business: "https://t.me/magnusstaff=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-  
-  },
-  
+Kenya: {
+Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business: "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
 
-  
-  Other: {
-  
-    Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-  
-    Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-  
-    Business: "https://t.me/magnusstaff=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-  
-  }
-  
+},
 
-  
+Cameroon: {
+Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business: "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
+},
+
+"South Africa": {
+Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business:  "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
+},
+
+Other: {
+Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business:  "https://t.me/Coachsucess1=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
+}
+
 };
-  
 
-  
-const country = document.getElementById("country");
-  
-const plan = document.getElementById("plan");
-  
-const planInfo = document.getElementById("planInfo");
-  
-const promoBox = document.getElementById("promoBox");
-  
+/* ======================================= */
+/* ELEMENTS */
+/* ======================================= */
 
-  
-country.addEventListener("change", function() {
-  
+const country =
+document.getElementById("country");
 
-  
-  const selectedCountry = country.value;
-  
+const plan =
+document.getElementById("plan");
 
-  
-  if(selectedCountry === "Request MoMo"){
-  
-    window.location.href = "https://t.me/magnusstaff";
-  
-    return;
-  
-  }
-  
+const planInfo =
+document.getElementById("planInfo");
 
-  
-  plan.innerHTML =
-  
-  '<option value="">Choose your Magnus Plan</option>';
-  
+const promoBox =
+document.getElementById("promoBox");
 
-  
-  if(data[selectedCountry]){
-  
+/* ======================================= */
+/* LOAD COUNTRY PLANS */
+/* ======================================= */
 
-  
-    promoBox.innerHTML =
-  
-    '🎉 Activate your account today and unlock <strong>' +
-  
-    data[selectedCountry].bonus +
-  
-    '</strong> after successful participation.';
-  
+country.addEventListener("change", () => {
 
-  
-    Object.keys(data[selectedCountry].plans).forEach(function(planName){
-  
+const selectedCountry =
+country.value;
 
-  
-      const option = document.createElement("option");
-  
+/* REQUEST MOMO */
 
-  
-      option.value = planName;
-  
+if(selectedCountry === "Request MoMo"){
 
-  
-      option.textContent =
-  
-      'Magnus ' + planName + ' — ' +
-  
-      data[selectedCountry].plans[planName];
-  
+window.location.href =
+"https://t.me/magnusstaff";
 
-  
-      plan.appendChild(option);
-  
+return;
 
-  
-    });
-  
+}
 
-  
-  }
-  
+plan.innerHTML =
+<option value="">Choose your Magnus Plan</option>;
 
-  
+if(data[selectedCountry]){
+
+promoBox.innerHTML = `
+🎉 Activate your account today and unlock
+<strong>${data[selectedCountry].bonus}</strong>
+after successful participation.
+`;
+
+Object.keys(
+data[selectedCountry].plans
+).forEach(planName => {
+
+const option =
+document.createElement("option");
+
+option.value = planName;
+
+option.textContent =
+`Magnus ${planName} — ${data[selectedCountry].plans[planName]}`;
+
+plan.appendChild(option);
+
 });
-  
 
-  
-plan.addEventListener("change", function(){
-  
+}
 
-  
-  const selectedCountry = country.value;
-  
-  const selectedPlan = plan.value;
-  
-
-  
-  if(!data[selectedCountry]) return;
-  
-
-  
-  planInfo.innerHTML =
-  
-  '<strong>Magnus ' + selectedPlan + '</strong><br>' +
-  
-  'Activation Fee: ' +
-  
-  data[selectedCountry].plans[selectedPlan] +
-  
-  '<br><br>🎁 Reward: ' +
-  
-  data[selectedCountry].bonus +
-  
-  '<br><br>• Premium digital access<br>' +
-  
-  '• Secure member onboarding<br>' +
-  
-  '• Participation reward system<br>' +
-  
-  '• Fast activation process';
-  
-
-  
 });
-  
 
-  
-document.getElementById("form")
-  
+/* ======================================= */
+/* PLAN INFO */
+/* ======================================= */
+
+plan.addEventListener("change", () => {
+
+const selectedCountry =
+country.value;
+
+const selectedPlan =
+plan.value;
+
+if(
+!data[selectedCountry] ||
+!data[selectedCountry].plans[selectedPlan]
+) return;
+
+planInfo.innerHTML = `
+<strong>Magnus ${selectedPlan}</strong><br>
+Activation Fee:
+${data[selectedCountry].plans[selectedPlan]}<br><br>
+
+🎁 Reward:
+${data[selectedCountry].bonus}<br><br>
+• Premium digital access<br>
+• Secure member onboarding<br>
+• Participation reward system<br>
+• Fast activation process
+`;
+
+});
+
+/* ======================================= */
+/* FORM VALIDATION */
+/* ======================================= */
+
+document
+.getElementById("form")
 .addEventListener("submit", function(e){
-  
 
-  
-  e.preventDefault();
-  
+e.preventDefault();
 
-  
-  const email =
-  
-  document.getElementById("email");
-  
+const email =
+document.getElementById("email");
 
-  
-  const password =
-  
-  document.getElementById("password");
-  
+const password =
+document.getElementById("password");
 
-  
-  const confirm =
-  
-  document.getElementById("confirm");
-  
+const confirm =
+document.getElementById("confirm");
 
-  
-  const selectedCountry =
-  
-  country.value;
-  
+const selectedCountry =
+country.value;
 
-  
-  const selectedPlan =
-  
-  plan.value;
-  
+const selectedPlan =
+plan.value;
 
-  
-  const emailErr =
-  
-  document.getElementById("emailErr");
-  
+const emailErr =
+document.getElementById("emailErr");
 
-  
-  const passErr =
-  
-  document.getElementById("passErr");
-  
+const passErr =
+document.getElementById("passErr");
 
-  
-  const successBox =
-  
-  document.getElementById("successBox");
-  
+const successBox =
+document.getElementById("successBox");
 
-  
-  let valid = true;
-  
+let valid = true;
 
-  
-  const emailPattern =
-  
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+const emailPattern =
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  
-  if(!emailPattern.test(email.value.trim())){
-  
-    emailErr.style.display = "block";
-  
-    valid = false;
-  
-  } else {
-  
-    emailErr.style.display = "none";
-  
-  }
-  
+if(!emailPattern.test(email.value.trim())){
 
-  
-  if(password.value !== confirm.value){
-  
-    passErr.style.display = "block";
-  
-    valid = false;
-  
-  } else {
-  
-    passErr.style.display = "none";
-  
-  }
-  
+emailErr.style.display = "block";
+valid = false;
 
-  
-  if(!valid) return;
-  
+} else {
 
-  
-  successBox.style.display = "block";
-  
+emailErr.style.display = "none";
 
-  
-  successBox.innerHTML =
-  
-  "✅ Account created successfully.<br>Redirecting...";
-  
+}
 
-  
-  setTimeout(function(){
-  
+if(password.value !== confirm.value){
+
+passErr.style.display = "block";
+valid = false;
+
+} else {
+
+passErr.style.display = "none";
+
+}
+
+if(!valid) return;
+
+successBox.style.display = "block";
+
+successBox.innerHTML = `
+✅ Account created successfully.<br>
+Redirecting to secure payment...
+`;
+
+setTimeout(() => {
+
 /* NIGERIA */
 
 if(selectedCountry === "Nigeria"){
 
-localStorage.setItem(
-"magnusPlan",
-selectedPlan
-);
-
-localStorage.setItem(
-"magnusUserName",
-document.getElementById("name").value
-);
-
 window.location.href =
-dashboard.html?plan=${selectedPlan};
+`dashboard.html?plan=${selectedPlan}`;
 
 }
   
@@ -1468,29 +932,25 @@ dashboard.html?plan=${selectedPlan};
 
   
     }
-  
 
-  
-    else if(paymentLinks[selectedCountry]){
-  
+/* OTHER COUNTRIES */
 
-  
-      window.location.href =
-  
-      paymentLinks[selectedCountry][selectedPlan];
-  
+else{
 
-  
-    }
-  
+const link =
+paymentLinks[selectedCountry][selectedPlan];
 
-  
-  }, 2000);
-  
+window.location.href = link;
 
-  
+}
+
+},2000);
+
 });
-  
 
+</script>
+
+</body>
+</html>background:
+  rgba(255,255,255,0.03);
   
-</script></body></html>
