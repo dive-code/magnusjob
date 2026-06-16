@@ -608,9 +608,9 @@ body{
         Welcome Bonus
       </span>
 
-      <span>
-        ₦27,500
-      </span>
+    <span id="welcomeBonus">
+  ₦0
+</span>
 
     </div>
 
@@ -632,9 +632,9 @@ body{
         Available Earnings
       </h3>
 
-      <div class="amount">
-        ₦27,500
-      </div>
+      <div class="amount" id="availableBonus">
+  ₦0
+</div>
 
       <button
       class="activate-btn"
@@ -774,6 +774,18 @@ body{
 
 </div>
 
+  <script>
+const params = new URLSearchParams(window.location.search);
+
+const plan = params.get("plan");
+const bonus = params.get("bonus");
+const price = params.get("price");
+
+document.getElementById("userPlan").textContent = plan;
+document.getElementById("userBonus").textContent = bonus;
+document.getElementById("userPrice").textContent = price;
+</script>
+
 <script>
 
 /* =========================== */
@@ -828,6 +840,21 @@ document.getElementById('name').value
 window.location.href = 'dashboard.html';
 
 */
+
+  const bonus =
+localStorage.getItem("magnusBonus");
+
+const userName =
+localStorage.getItem("magnusUserName");
+
+if(userName){
+  document.getElementById("userName").textContent = userName;
+}
+
+if(bonus){
+  document.getElementById("welcomeBonus").textContent = bonus;
+  document.getElementById("availableBonus").textContent = bonus;
+}
 
 </script>
 
