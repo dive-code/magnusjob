@@ -707,90 +707,76 @@ Business:"$40"
 const paymentLinks = {
 
 
+:::writing{variant=“standard” id=“63827”}
+const paymentLinks = {
+
 Kenya: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan"
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan"
-Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+business+plan
-}
+Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
+Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
+Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+},
 
 Cameroon: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan"
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan"
-Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+business+plan
-}
+Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
+Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
+Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+},
 
-"South Africa": {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan"
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan"
-Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+business+plan
-}
+“South Africa”: {
+Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
+Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
+Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+},
 
 Other: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan"
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan"
-Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+business+plan
+Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
+Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
+Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
 }
 
 };
 
-/* ======================================= */
-/* ELEMENTS */
-/* ======================================= */
+/* ======================================= /
+/ ELEMENTS /
+/ ======================================= */
 
-const country =
-document.getElementById("country");
+const country = document.getElementById(“country”);
+const plan = document.getElementById(“plan”);
+const planInfo = document.getElementById(“planInfo”);
+const promoBox = document.getElementById(“promoBox”);
 
-const plan =
-document.getElementById("plan");
+/* ======================================= /
+/ LOAD COUNTRY PLANS /
+/ ======================================= */
 
-const planInfo =
-document.getElementById("planInfo");
+country.addEventListener(“change”, () => {
 
-const promoBox =
-document.getElementById("promoBox");
+const selectedCountry = country.value;
 
-/* ======================================= */
-/* LOAD COUNTRY PLANS */
-/* ======================================= */
-
-country.addEventListener("change", () => {
-
-const selectedCountry =
-country.value;
-
-/* REQUEST MOMO */
-
-if(selectedCountry === "Request MoMo"){
+if(selectedCountry === “Request MoMo”){
 
 window.location.href =
-"https://t.me/magnusstaff?text=Hello+I+need+momo+to+account+for+payment+of+registration"
+“https://t.me/magnusstaff?text=Hello+I+need+momo+to+account+for+payment+of+registration”;
 
 return;
 
 }
 
 plan.innerHTML =
-`<option value="">Choose your Magnus Plan</option>`;
+<option value="">Choose your Magnus Plan</option>;
 
 if(data[selectedCountry]){
 
-promoBox.innerHTML = `
-🎉 Activate your account today and unlock
-<strong>${data[selectedCountry].bonus}</strong>
-after successful participation.
-`;
+promoBox.innerHTML = 🎉 Activate your account today and unlock <strong>${data[selectedCountry].bonus}</strong> after successful participation.;
 
-Object.keys(
-data[selectedCountry].plans
-).forEach(planName => {
+Object.keys(data[selectedCountry].plans).forEach(planName => {
 
-const option =
-document.createElement("option");
+const option = document.createElement(“option”);
 
 option.value = planName;
 
 option.textContent =
-`Magnus ${planName} — ${data[selectedCountry].plans[planName]}`;
+Magnus ${planName} — ${data[selectedCountry].plans[planName]};
 
 plan.appendChild(option);
 
@@ -800,17 +786,14 @@ plan.appendChild(option);
 
 });
 
-/* ======================================= */
-/* PLAN INFO */
-/* ======================================= */
+/* ======================================= /
+/ PLAN INFO /
+/ ======================================= */
 
-plan.addEventListener("change", () => {
+plan.addEventListener(“change”, () => {
 
-const selectedCountry =
-country.value;
-
-const selectedPlan =
-plan.value;
+const selectedCountry = country.value;
+const selectedPlan = plan.value;
 
 if(
 !data[selectedCountry] ||
@@ -818,123 +801,99 @@ if(
 ) return;
 
 planInfo.innerHTML = `
-<strong>Magnus ${selectedPlan}</strong><br>
-Activation Fee:
-${data[selectedCountry].plans[selectedPlan]}<br><br>
+Magnus ${selectedPlan}
+Activation Fee: ${data[selectedCountry].plans[selectedPlan]}
 
-🎁 Reward:
-${data[selectedCountry].bonus}<br><br>
+🎁 Reward: ${data[selectedCountry].bonus}
 
-• Premium digital access<br>
-• Secure member onboarding<br>
-• Participation reward system<br>
+• Premium digital access
+• Secure member onboarding
+• Participation reward system
 • Fast activation process
 `;
 
 });
 
-/* ======================================= */
-/* FORM VALIDATION */
-/* ======================================= */
+/* ======================================= /
+/ FORM VALIDATION /
+/ ======================================= */
 
-document
-.getElementById("form")
-.addEventListener("submit", function(e){
+document.getElementById(“form”)
+.addEventListener(“submit”, function(e){
 
 e.preventDefault();
 
-const email =
-document.getElementById("email");
+const email = document.getElementById(“email”);
+const password = document.getElementById(“password”);
+const confirm = document.getElementById(“confirm”);
 
-const password =
-document.getElementById("password");
+const selectedCountry = country.value;
+const selectedPlan = plan.value;
 
-const confirm =
-document.getElementById("confirm");
-
-const selectedCountry =
-country.value;
-
-const selectedPlan =
-plan.value;
-
-const emailErr =
-document.getElementById("emailErr");
-
-const passErr =
-document.getElementById("passErr");
-
-const successBox =
-document.getElementById("successBox");
+const emailErr = document.getElementById(“emailErr”);
+const passErr = document.getElementById(“passErr”);
+const successBox = document.getElementById(“successBox”);
 
 let valid = true;
 
 const emailPattern =
-/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+/^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
 if(!emailPattern.test(email.value.trim())){
 
-emailErr.style.display = "block";
+emailErr.style.display = “block”;
 valid = false;
 
-} else {
+}else{
 
-emailErr.style.display = "none";
+emailErr.style.display = “none”;
 
 }
 
 if(password.value !== confirm.value){
 
-passErr.style.display = "block";
+passErr.style.display = “block”;
 valid = false;
 
-} else {
+}else{
 
-passErr.style.display = "none";
+passErr.style.display = “none”;
 
 }
 
 if(!valid) return;
 
-successBox.style.display = "block";
+successBox.style.display = “block”;
 
-successBox.innerHTML = `
-✅ Account created successfully.<br>
-Redirecting to secure payment...
-`;
+successBox.innerHTML = ✅ Account created successfully.<br> Redirecting to secure payment...;
 
 setTimeout(() => {
 
-setTimeout(() => {
-
-/* NIGERIA */
-if(selectedCountry === "Nigeria"){
+if(selectedCountry === “Nigeria”){
 
 window.location.href =
-`dashboard.html?plan=${selectedPlan}`;
+dashboard.html?plan=${selectedPlan};
 
 }
 
-/* GHANA */
-else if(selectedCountry === "Ghana"){
+else if(selectedCountry === “Ghana”){
 
 window.location.href =
-`ghana.html?plan=${selectedPlan}`;
+ghana.html?plan=${selectedPlan};
 
 }
 
-/* OTHER COUNTRIES */
 else{
 
 const link =
-paymentLinks[selectedCountry][selectedPlan];
+paymentLinks[selectedCountry]?.[selectedPlan];
 
+if(link){
 window.location.href = link;
+}
 
 }
 
 }, 2000);
-</script>
 
-</body>
-</html>
+});
