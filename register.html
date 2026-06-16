@@ -969,8 +969,32 @@ if(selectedCountry === "Nigeria"){
 const planData =
 data["Nigeria"].plans[selectedPlan];
 
+/* SAVE USER DATA */
+
+localStorage.setItem(
+"magnusUserName",
+document.getElementById("name").value
+);
+
+localStorage.setItem(
+"magnusPlan",
+selectedPlan
+);
+
+localStorage.setItem(
+"magnusBonus",
+planData.bonus
+);
+
+localStorage.setItem(
+"magnusPrice",
+planData.price
+);
+
+/* REDIRECT */
+
 window.location.href =
-`dashboard.html?plan=${encodeURIComponent(selectedPlan)}&bonus=${encodeURIComponent(planData.bonus)}&price=${encodeURIComponent(planData.price)}`;
+"dashboard.html";
 
 }
   
