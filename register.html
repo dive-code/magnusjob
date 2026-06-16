@@ -905,16 +905,18 @@ Redirecting to secure payment...
 
 setTimeout(() => {
 
-/* NIGERIA */
+setTimeout(() => {
 
+/* NIGERIA */
 if(selectedCountry === "Nigeria"){
 
 window.location.href =
-`dashboard.html?plan=${selectedPlan}`; 
+`dashboard.html?plan=${selectedPlan}`;
 
-/* Ghana */
+}
 
-if(selectedCountry === "Ghana"){
+/* GHANA */
+else if(selectedCountry === "Ghana"){
 
 window.location.href =
 `ghana.html?plan=${selectedPlan}`;
@@ -922,7 +924,6 @@ window.location.href =
 }
 
 /* OTHER COUNTRIES */
-
 else{
 
 const link =
@@ -932,10 +933,7 @@ window.location.href = link;
 
 }
 
-},2000);
-
-});
-
+}, 2000);
 </script>
 
 </body>
