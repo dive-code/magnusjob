@@ -776,60 +776,40 @@ body{
 
 </div>
 
-  <script>
-const params = new URLSearchParams(window.location.search);
-
-const plan = params.get("plan");
-const bonus = params.get("bonus");
-const price = params.get("price");
-
-document.getElementById("userPlan").textContent = plan;
-document.getElementById("userBonus").textContent = bonus;
-document.getElementById("userPrice").textContent = price;
-</script>
-
 <script>
-/* =========================== */
-/* LOAD USER DATA FROM LOCALSTORAGE */
-/* =========================== */
+/* ===========================
+   LOAD DATA FROM LOCALSTORAGE
+=========================== */
 
 const userName = localStorage.getItem("magnusUserName");
 const userBonus = localStorage.getItem("magnusBonus");
-const userPlan = localStorage.getItem("magnusPlan");
 
-/* =========================== */
-/* DISPLAY USER NAME */
-/* =========================== */
+/* ===========================
+   SHOW USER NAME
+=========================== */
 
 document.getElementById("userName").textContent =
 userName || "Magnus Member";
 
-/* =========================== */
-/* DISPLAY BONUS (IMPORTANT PART) */
-/* =========================== */
+/* ===========================
+   SHOW BONUS (MAIN FIX)
+=========================== */
 
-if (userBonus) {
-  document.getElementById("welcomeBonus").textContent = userBonus;
-  document.getElementById("availableBonus").textContent = userBonus;
-} else {
-  document.getElementById("welcomeBonus").textContent = "₦0";
-  document.getElementById("availableBonus").textContent = "₦0";
-}
+const bonusText = userBonus ? userBonus : "₦0";
 
-/* =========================== */
-/* PAYMENT BUTTON */
-/* =========================== */
+document.getElementById("welcomeBonus").textContent = bonusText;
+document.getElementById("availableBonus").textContent = bonusText;
+
+/* ===========================
+   FUNCTIONS
+=========================== */
 
 function goPayment(){
   window.location.href = "payment.html";
 }
 
-/* =========================== */
-/* SHARE FUNCTION */
-/* =========================== */
-
 function sharePost(){
-  alert("📢 Share Magnus promotional posts hourly and earn rewards after verification.");
+  alert("📢 Share Magnus posts and earn rewards after verification.");
 }
 </script>
 </body>
