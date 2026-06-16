@@ -609,8 +609,8 @@ body{
       </span>
 
     <span id="welcomeBonus">
-  ₦0
-</span>
+     ₦0
+    </span>
 
     </div>
 
@@ -628,13 +628,15 @@ body{
 
     <div class="inner-card">
 
+    
       <h3>
         Available Earnings
       </h3>
 
-      <div class="amount" id="availableBonus">
-  ₦0
-</div>
+      <div class="amount"
+        id="availableBonus">
+          ₦0
+       </div>
 
       <button
       class="activate-btn"
@@ -857,6 +859,31 @@ if(bonus){
 }
 
 </script>
+<script>
 
+const userName =
+localStorage.getItem("magnusUserName");
+
+const userBonus =
+localStorage.getItem("magnusBonus");
+
+if(userName){
+
+document.getElementById("userName").textContent =
+userName;
+
+}
+
+if(userBonus){
+
+document.getElementById("welcomeBonus").textContent =
+userBonus;
+
+document.getElementById("availableBonus").textContent =
+userBonus;
+
+}
+
+</script>
 </body>
 </html>
