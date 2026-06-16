@@ -966,8 +966,11 @@ setTimeout(() => {
 
 if(selectedCountry === "Nigeria"){
 
+const planData =
+data["Nigeria"].plans[selectedPlan];
+
 window.location.href =
-`dashboard.html?plan=${selectedPlan}`;
+`dashboard.html?plan=${encodeURIComponent(selectedPlan)}&bonus=${encodeURIComponent(planData.bonus)}&price=${encodeURIComponent(planData.price)}`;
 
 }
   
