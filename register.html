@@ -648,57 +648,65 @@ Already have an account?
 const data = {
 
 Nigeria: {
-bonus: "₦27,500 bonus credit",
-plans: {
-Lite:"₦11,500",
-Pro:"₦17,500",
-Business:"₦28,500"
-}
+  plans: {
+    Lite: {
+      price: "₦11,500",
+      bonus: "₦7,500 Bonus Credit"
+    },
+    Pro: {
+      price: "₦17,500",
+      bonus: "₦17,500 Bonus Credit"
+    },
+    Business: {
+      price: "₦28,500",
+      bonus: "₦27,500 Bonus Credit"
+    }
+  }
 },
 
 Ghana: {
-bonus: "₵275 bonus credit",
-plans: {
-Lite:"₵185",
-Pro:"₵295",
-Business:"₵400"
-}
+  bonus: "₵275 bonus credit",
+  plans: {
+    Lite:"₵185",
+    Pro:"₵295",
+    Business:"₵400"
+  }
 },
 
 Kenya: {
-bonus: "KES 2,750 bonus credit",
-plans: {
-Lite:"KES 1,800",
-Pro:"KES 2,600",
-Business:"KES 3,800"
-}
+  bonus: "KES 2,750 bonus credit",
+  plans: {
+    Lite:"KES 1,800",
+    Pro:"KES 2,600",
+    Business:"KES 3,800"
+  }
 },
 
 Cameroon: {
-bonus: "XAF 27,500 bonus credit",
-plans: {
-Lite:"XAF 8,500",
-Pro:"XAF 13,500",
-Business:"XAF 22,500"
-}
+  bonus: "XAF 27,500 bonus credit",
+  plans: {
+    Lite:"XAF 8,500",
+    Pro:"XAF 13,500",
+    Business:"XAF 22,500"
+  }
 },
 
 "South Africa": {
-bonus: "ZAR 275 bonus credit",
-plans: {
-Lite:"ZAR 280",
-Pro:"ZAR 400",
-Business:"ZAR 520"
-}
+  bonus: "ZAR 275 bonus credit",
+  plans: {
+    Lite:"ZAR 280",
+    Pro:"ZAR 400",
+    Business:"ZAR 520"
+  }
 },
 
 Other: {
-bonus: "International bonus access",
-plans: {
-Lite:"$15",
-Pro:"$25",
-Business:"$40"
-}
+  bonus: "International bonus access",
+  plans: {
+    Lite:"$15",
+    Pro:"$25",
+    Business:"$40"
+  }
 }
 
 };
@@ -707,44 +715,40 @@ Business:"$40"
 /* PAYMENT LINKS */
 /* ======================================= */
 
-const paymentLinks = {
+  const paymentLinks = {
 
 Ghana: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+  Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+  Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+  Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?"
 },
 
 Kenya: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+  Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+  Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+  Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?"
 },
 
 Cameroon: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+  Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+  Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+  Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?"
 },
 
 "South Africa": {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business:  "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+  Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+  Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+  Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?"
 },
 
 Other: {
-Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
-Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
-Business:  "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
-
+  Lite: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+  Pro: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+  Business: "https://t.me/Coachsucess1?text=Hello+I+am+ready+to+make+payment+for+Business+plan?"
 }
 
 };
+
 
 /* ======================================= */
 /* ELEMENTS */
@@ -788,9 +792,9 @@ plan.innerHTML =
 if(data[selectedCountry]){
 
 promoBox.innerHTML = `
-🎉 Activate your account today and unlock
-<strong>${data[selectedCountry].bonus}</strong>
-after successful participation.
+🎉 Select a Magnus plan to view your
+<strong>bonus reward</strong>
+and activation benefits.
 `;
 
 Object.keys(
@@ -802,8 +806,17 @@ document.createElement("option");
 
 option.value = planName;
 
+if(selectedCountry === "Nigeria"){
+
+option.textContent =
+`Magnus ${planName} — ${data[selectedCountry].plans[planName].price}`;
+
+}else{
+
 option.textContent =
 `Magnus ${planName} — ${data[selectedCountry].plans[planName]}`;
+
+}
 
 plan.appendChild(option);
 
@@ -825,10 +838,40 @@ country.value;
 const selectedPlan =
 plan.value;
 
-if(
-!data[selectedCountry] ||
-!data[selectedCountry].plans[selectedPlan]
-) return;
+if(!selectedCountry || !selectedPlan) return;
+
+/* NIGERIA */
+
+if(selectedCountry === "Nigeria"){
+
+const selectedData =
+data[selectedCountry].plans[selectedPlan];
+
+promoBox.innerHTML = `
+🎉 Activate your account today and unlock
+<strong>${selectedData.bonus}</strong>
+after successful participation.
+`;
+
+planInfo.innerHTML = `
+<strong>Magnus ${selectedPlan}</strong><br>
+Activation Fee:
+${selectedData.price}<br><br>
+
+🎁 Reward:
+${selectedData.bonus}<br><br>
+
+• Premium digital access<br>
+• Secure member onboarding<br>
+• Participation reward system<br>
+• Fast activation process
+`;
+
+}
+
+/* OTHER COUNTRIES */
+
+else{
 
 planInfo.innerHTML = `
 <strong>Magnus ${selectedPlan}</strong><br>
@@ -844,8 +887,9 @@ ${data[selectedCountry].bonus}<br><br>
 • Fast activation process
 `;
 
-});
+}
 
+});
 /* ======================================= */
 /* FORM VALIDATION */
 /* ======================================= */
@@ -957,7 +1001,3 @@ window.location.href = link;
 });
 
 </script>
-
-</body>
-</html>
-
