@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -707,33 +710,38 @@ Business:"$40"
 const paymentLinks = {
 
 Ghana: {
-Lite: "https://selar.co/ghana-all-plans",
-Pro: "https://selar.co/ghana-all-plans",
-Business: "https://selar.co/ghana-all-plans"
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
 },
 
 Kenya: {
-Lite: "https://selar.co/kenya-all-plans",
-Pro: "https://selar.co/kenya-all-plans",
-Business: "https://selar.co/kenya-all-plans"
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
 },
 
 Cameroon: {
-Lite: "https://selar.co/cameroon-all-plans",
-Pro: "https://selar.co/cameroon-all-plans",
-Business: "https://selar.co/cameroon-all-plans"
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business: "https://t.me/magnusstaff?=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
 },
 
-"South Africa": {
-Lite: "https://selar.co/sa-all-plans",
-Pro: "https://selar.co/sa-all-plans",
-Business: "https://selar.co/sa-all-plans"
+"South Africa": 
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business:  "https://t.me/magnusstaff?=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
 },
 
 Other: {
-Lite: "https://selar.co/international-all-plans",
-Pro: "https://selar.co/international-all-plans",
-Business: "https://selar.co/international-all-plans"
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan?",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan?",
+Business:  "https://t.me/magnusstaff?=Hello+I+am+ready+to+make+payment+for+Business+plan?",
+
 }
 
 };
@@ -918,26 +926,23 @@ window.location.href =
 `dashboard.html?plan=${selectedPlan}`;
 
 }
+  
 
-setTimeout(() => {
+  
+    else if(selectedCountry === "Ghana"){
+  
 
-/* NIGERIA */
-if(selectedCountry === "Nigeria"){
+  
+      window.location.href =
+  
+      "ghana.html?plan=" + selectedPlan;
+  
 
-window.location.href =
-`dashboard.html?plan=${selectedPlan}`;
-
-}
-
-/* GHANA */
-else if(selectedCountry === "Ghana"){
-
-window.location.href =
-`ghana.html?plan=${selectedPlan}`;
-
-}
+  
+    }
 
 /* OTHER COUNTRIES */
+
 else{
 
 const link =
@@ -948,6 +953,10 @@ window.location.href = link;
 }
 
 },2000);
+
+});
+
+</script>
 
 </body>
 </html>
