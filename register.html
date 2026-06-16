@@ -706,32 +706,30 @@ Business:"$40"
 
 const paymentLinks = {
 
-
-:::writing{variant=“standard” id=“63827”}
 const paymentLinks = {
 
 Kenya: {
-Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
-Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
-Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan",
+Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan"
 },
 
 Cameroon: {
-Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
-Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
-Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan",
+Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan"
 },
 
-“South Africa”: {
-Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
-Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
-Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+"South Africa": {
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan",
+Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan"
 },
 
 Other: {
-Lite: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan”,
-Pro: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan”,
-Business: “https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan”
+Lite: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Lite+plan",
+Pro: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Pro+plan",
+Business: "https://t.me/magnusstaff?text=Hello+I+am+ready+to+make+payment+for+Business+plan"
 }
 
 };
@@ -869,17 +867,17 @@ successBox.innerHTML = ✅ Account created successfully.<br> Redirecting to secu
 
 setTimeout(() => {
 
-if(selectedCountry === “Nigeria”){
+if(selectedCountry === "Nigeria"){
 
 window.location.href =
-dashboard.html?plan=${selectedPlan};
+`dashboard.html?plan=${selectedPlan}`;
 
 }
 
-else if(selectedCountry === “Ghana”){
+else if(selectedCountry === "Ghana"){
 
 window.location.href =
-ghana.html?plan=${selectedPlan};
+`ghana.html?plan=${selectedPlan}`;
 
 }
 
@@ -895,5 +893,3 @@ window.location.href = link;
 }
 
 }, 2000);
-
-});
