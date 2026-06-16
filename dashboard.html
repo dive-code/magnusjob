@@ -789,101 +789,48 @@ document.getElementById("userPrice").textContent = price;
 </script>
 
 <script>
+/* =========================== */
+/* LOAD USER DATA FROM LOCALSTORAGE */
+/* =========================== */
+
+const userName = localStorage.getItem("magnusUserName");
+const userBonus = localStorage.getItem("magnusBonus");
+const userPlan = localStorage.getItem("magnusPlan");
 
 /* =========================== */
-/* GET USER NAME */
+/* DISPLAY USER NAME */
 /* =========================== */
 
-const storedName =
-localStorage.getItem("magnusUserName");
-
-/* DISPLAY NAME */
-
-document.getElementById("userName")
-.textContent =
-storedName || "Magnus Member";
+document.getElementById("userName").textContent =
+userName || "Magnus Member";
 
 /* =========================== */
-/* PAYMENT PAGE */
+/* DISPLAY BONUS (IMPORTANT PART) */
+/* =========================== */
+
+if (userBonus) {
+  document.getElementById("welcomeBonus").textContent = userBonus;
+  document.getElementById("availableBonus").textContent = userBonus;
+} else {
+  document.getElementById("welcomeBonus").textContent = "₦0";
+  document.getElementById("availableBonus").textContent = "₦0";
+}
+
+/* =========================== */
+/* PAYMENT BUTTON */
 /* =========================== */
 
 function goPayment(){
-
-window.location.href =
-"payment.html";
-
+  window.location.href = "payment.html";
 }
 
 /* =========================== */
-/* SHARE POSTS */
+/* SHARE FUNCTION */
 /* =========================== */
 
 function sharePost(){
-
-alert(
-"📢 Share Magnus promotional posts hourly and earn 5000 points after verification."
-);
-
+  alert("📢 Share Magnus promotional posts hourly and earn rewards after verification.");
 }
-
-/* =========================== */
-/* SAVE NAME FROM REGISTER */
-/* =========================== */
-
-/*
-ADD THIS TO YOUR REGISTER PAGE
-BEFORE REDIRECTING TO DASHBOARD:
-
-localStorage.setItem(
-'magnusUserName',
-document.getElementById('name').value
-);
-
-window.location.href = 'dashboard.html';
-
-*/
-
-  const bonus =
-localStorage.getItem("magnusBonus");
-
-const userName =
-localStorage.getItem("magnusUserName");
-
-if(userName){
-  document.getElementById("userName").textContent = userName;
-}
-
-if(bonus){
-  document.getElementById("welcomeBonus").textContent = bonus;
-  document.getElementById("availableBonus").textContent = bonus;
-}
-
-</script>
-<script>
-
-const userName =
-localStorage.getItem("magnusUserName");
-
-const userBonus =
-localStorage.getItem("magnusBonus");
-
-if(userName){
-
-document.getElementById("userName").textContent =
-userName;
-
-}
-
-if(userBonus){
-
-document.getElementById("welcomeBonus").textContent =
-userBonus;
-
-document.getElementById("availableBonus").textContent =
-userBonus;
-
-}
-
 </script>
 </body>
 </html>
