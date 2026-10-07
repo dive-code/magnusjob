@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnus | Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ======================================= */
+/* GLOBAL */
+/* ======================================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-family:"Poppins",sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:30px 20px;
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(255,153,0,0.15),
+    transparent 30%
+  ),
+  #050505;
+  color:#fff;
+  overflow-x:hidden;
+}
+/* ======================================= */
+/* BACKGROUND GLOW */
+/* ======================================= */
+.bg-glow{
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(
+    circle at top left,
+    rgba(255,0,87,0.12),
+    transparent 35%
+  );
+  pointer-events:none;
+}
+/* ======================================= */
+/* MAIN CARD */
+/* ======================================= */
+.container{
+  width:100%;
+  max-width:520px;
+  position:relative;
+  background:
+  rgba(10,10,10,0.92);
+  border:
+  1px solid rgba(255,255,255,0.06);
+  border-radius:28px;
+  padding:40px 30px;
+  backdrop-filter:blur(18px);
+  box-shadow:
+  0 25px 70px rgba(0,0,0,0.65);
+  overflow:hidden;
+}
+/* ======================================= */
+/* CARD GLOW */
+/* ======================================= */
+.container::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(
+    135deg,
+    rgba(255,153,0,0.08),
+    rgba(255,0,87,0.04),
+    transparent
+  );
+  pointer-events:none;
+}
+/* ======================================= */
+/* BRAND */
+/* ======================================= */
+.brand{
+  position:relative;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:7px;
+  color:#ff9900;
+  font-weight:600;
+  margin-bottom:14px;
+}
+/* ======================================= */
+/* HEADER */
+/* ======================================= */
+h1{
+  position:relative;
+  text-align:center;
+  font-size:32px;
+  margin-bottom:10px;
+  background:
+  linear-gradient(
+    to right,
+    #ff9900,
+    #ff0057
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.sub{
+  position:relative;
+  text-align:center;
+  font-size:15px;
+  color:#aaa;
+  line-height:1.7;
+  margin-bottom:25px;
+}
+/* ======================================= */
+/* WELCOME BOX */
+/* ======================================= */
+.welcome{
+  position:relative;
+  background:
+  rgba(255,153,0,0.08);
+  border:
+  1px solid rgba(255,153,0,0.18);
+  padding:16px;
+  border-radius:18px;
+  text-align:center;
+  line-height:1.7;
+  font-size:14px;
+  color:#fff;
+  margin-bottom:25px;
+}
+.welcome strong{
+  color:#ff9900;
+}
+/* ======================================= */
+/* FORM */
+/* ======================================= */
+form{
+  position:relative;
+  z-index:2;
+}
+label{
+  display:block;
+  margin-top:16px;
+  margin-bottom:8px;
+  font-size:13px;
+  color:#bdbdbd;
+  font-weight:500;
+}
+/* ======================================= */
+/* INPUT */
+/* ======================================= */
+.input-box{
+  position:relative;
+}
+input{
+  width:100%;
+  padding:15px 16px;
+  border-radius:14px;
+  border:
+  1px solid rgba(255,255,255,0.06);
+  background:
+  rgba(255,255,255,0.03);
+  color:#fff;
+  outline:none;
+  font-size:14px;
+  transition:0.3s ease;
+}
+input::placeholder{
+  color:#777;
+}
+input:focus{
+  border-color:#ff9900;
+  box-shadow:
+  0 0 0 4px rgba(255,153,0,0.08);
+  background:
+  rgba(255,255,255,0.04);
+}
+/* ======================================= */
+/* PASSWORD */
+/* ======================================= */
+.password-box{
+  position:relative;
+}
+.password-box input{
+  padding-right:80px;
+}
+.show-password{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  width:auto;
+  padding:0;
+  margin:0;
+  color:#ff9900;
+  font-family:"Poppins",sans-serif;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:none;
+}
+.show-password:hover{
+  transform:translateY(-50%);
+  box-shadow:none;
+}
+/* ======================================= */
+/* FORGOT PASSWORD */
+/* ======================================= */
+.forgot{
+  text-align:right;
+  margin-top:10px;
+}
+.forgot a{
+  color:#999;
+  font-size:12px;
+  text-decoration:none;
+}
+.forgot a:hover{
+  color:#ff9900;
+}
+/* ======================================= */
+/* ERROR */
+/* ======================================= */
+.error{
+  display:none;
+  margin-top:14px;
+  padding:13px 14px;
+  border-radius:13px;
+  background:
+  rgba(255,0,87,0.08);
+  border:
+  1px solid rgba(255,0,87,0.18);
+  color:#ff4d6d;
+  font-size:13px;
+  line-height:1.5;
+}
+/* ======================================= */
+/* SUCCESS */
+/* ======================================= */
+.success{
+  display:none;
+  margin-top:14px;
+  padding:13px 14px;
+  border-radius:13px;
+  background:
+  rgba(0,255,136,0.08);
+  border:
+  1px solid rgba(0,255,136,0.18);
+  color:#00ff88;
+  font-size:13px;
+  text-align:center;
+}
+/* ======================================= */
+/* LOGIN BUTTON */
+/* ======================================= */
+.login-btn{
+  width:100%;
+  margin-top:28px;
+  border:none;
+  padding:16px;
+  border-radius:40px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  color:#fff;
+  background:
+  linear-gradient(
+    to right,
+    #ff9900,
+    #ff0057
+  );
+  transition:0.3s ease;
+  box-shadow:
+  0 14px 40px rgba(255,0,87,0.22);
+}
+.login-btn:hover{
+  transform:
+  translateY(-3px);
+  box-shadow:
+  0 18px 45px rgba(255,0,87,0.28);
+}
+.login-btn:disabled{
+  opacity:0.65;
+  cursor:not-allowed;
+  transform:none;
+}
+/* ======================================= */
+/* LOADING */
+/* ======================================= */
+.loading{
+  display:none;
+  text-align:center;
+  margin-top:14px;
+  color:#aaa;
+  font-size:13px;
+}
+/* ======================================= */
+/* REGISTER */
+/* ======================================= */
+.register{
+  position:relative;
+  text-align:center;
+  margin-top:22px;
+  font-size:14px;
+  color:#999;
+}
+.register a{
+  color:#ff9900;
+  text-decoration:none;
+  font-weight:600;
+}
+/* ======================================= */
+/* MOBILE */
+/* ======================================= */
+@media(max-width:768px){
+  .container{
+    padding:30px 20px;
+    border-radius:22px;
+  }
+  h1{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="container">
+  <div class="brand">
+    MAGNUS
+  </div>
+  <h1>
+    Welcome Back
+  </h1>
+  <div class="sub">
+    Login to your Magnus account and continue your digital journey.
+  </div>
+  <div class="welcome">
+👋 Welcome back to <strong>Magnus</strong>.<br>
+Enter your registered email and password
+to access your account.
+  </div>
+  <form id="loginForm">
+<!-- EMAIL -->
+<label>
+  Email Address
+</label>
+<div class="input-box">
+  <input
+    type="email"
+    id="email"
+    placeholder="Enter your registered email"
+    autocomplete="email"
+    required>
+</div>
+<!-- PASSWORD -->
+<label>
+  Password
+</label>
+<div class="password-box">
+  <input
+    type="password"
+    id="password"
+    placeholder="Enter your password"
+    autocomplete="current-password"
+    required>
+  <button
+    type="button"
+    class="show-password"
+    id="togglePassword">
+    Show
+  </button>
+</div>
+<!-- FORGOT PASSWORD -->
+<div class="forgot">
+  <a href="#" id="forgotPassword">
+    Forgot password?
+  </a>
+</div>
+<!-- ERROR -->
+<div
+  class="error"
+  id="errorBox">
+</div>
+<!-- SUCCESS -->
+<div
+  class="success"
+  id="successBox">
+  ✅ Login successful. Redirecting...
+</div>
+<!-- LOGIN -->
+<button
+  type="submit"
+  class="login-btn"
+  id="loginButton">
+  Login to Account
+</button>
+<!-- LOADING -->
+<div
+  class="loading"
+  id="loadingBox">
+  🔐 Checking your account...
+</div>
+  </form>
+  <!-- REGISTER -->
+  <div class="register">
+Don't have an account?
+<a href="register.html">
+  Create Account
+</a>
+  </div>
+</div>
+<script>
+/* ======================================= */
+/* ELEMENTS */
+/* ======================================= */
+const loginForm =
+document.getElementById("loginForm");
+const email =
+document.getElementById("email");
+const password =
+document.getElementById("password");
+const togglePassword =
+document.getElementById("togglePassword");
+const errorBox =
+document.getElementById("errorBox");
+const successBox =
+document.getElementById("successBox");
+const loginButton =
+document.getElementById("loginButton");
+const loadingBox =
+document.getElementById("loadingBox");
+const forgotPassword =
+document.getElementById("forgotPassword");
+/* ======================================= */
+/* SHOW / HIDE PASSWORD */
+/* ======================================= */
+togglePassword.addEventListener("click", function(){
+  if(password.type === "password"){
+    password.type = "text";
+    togglePassword.textContent = "Hide";
+  }
+  else{
+    password.type = "password";
+    togglePassword.textContent = "Show";
+  }
+});
+/* ======================================= */
+/* ERROR */
+/* ======================================= */
+function showError(message){
+  errorBox.textContent = message;
+  errorBox.style.display = "block";
+  successBox.style.display = "none";
+}
+function hideError(){
+  errorBox.style.display = "none";
+}
+/* ======================================= */
+/* SUCCESS */
+/* ======================================= */
+function showSuccess(message){
+  successBox.textContent = message;
+  successBox.style.display = "block";
+  errorBox.style.display = "none";
+}
+/* ======================================= */
+/* LOGIN */
+/* ======================================= */
+loginForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  hideError();
+  successBox.style.display = "none";
+  const enteredEmail =
+    email.value.trim().toLowerCase();
+  const enteredPassword =
+    password.value;
+  /* =================================== */
+  /* VALIDATE EMAIL */
+  /* =================================== */
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailPattern.test(enteredEmail)){
+    showError(
+      "Please enter a valid email address."
+    );
+    return;
+  }
+  /* =================================== */
+  /* VALIDATE PASSWORD */
+  /* =================================== */
+  if(!enteredPassword){
+    showError(
+      "Please enter your password."
+    );
+    return;
+  }
+  /* =================================== */
+  /* GET SAVED ACCOUNT */
+  /* =================================== */
+  const savedAccount =
+    localStorage.getItem("magnusAccount");
+  if(!savedAccount){
+    showError(
+      "No Magnus account was found on this device. Please create an account first."
+    );
+    return;
+  }
+  let account;
+  try{
+    account =
+      JSON.parse(savedAccount);
+  }
+  catch(error){
+    showError(
+      "Your saved account data is corrupted. Please register again."
+    );
+    return;
+  }
+  /* =================================== */
+  /* CHECK ACCOUNT */
+  /* =================================== */
+  if(
+    !account.email ||
+    !account.password
+  ){
+    showError(
+      "Your account information is incomplete. Please register again."
+    );
+    return;
+  }
+  /* =================================== */
+  /* CHECK EMAIL */
+  /* =================================== */
+  if(
+    account.email.toLowerCase() !==
+    enteredEmail
+  ){
+    showError(
+      "Incorrect email address or password."
+    );
+    return;
+  }
+  /* =================================== */
+  /* CHECK PASSWORD */
+  /* =================================== */
+  if(
+    account.password !==
+    enteredPassword
+  ){
+    showError(
+      "Incorrect email address or password."
+    );
+    return;
+  }
+  /* =================================== */
+  /* LOGIN SUCCESS */
+  /* =================================== */
+  loginButton.disabled = true;
+  loadingBox.style.display = "block";
+  loginButton.textContent =
+    "Logging in...";
+  /* =================================== */
+  /* CREATE LOGIN SESSION */
+  /* =================================== */
+  localStorage.setItem(
+    "magnusLoggedIn",
+    "true"
+  );
+  localStorage.setItem(
+    "magnusCurrentUser",
+    JSON.stringify({
+      name:account.name || "",
+      email:account.email || "",
+      phone:account.phone || "",
+      country:account.country || "",
+      plan:account.plan || "",
+      price:account.price || "",
+      bonus:account.bonus || ""
+    })
+  );
+  /* =================================== */
+  /* RESTORE USER DATA */
+  /* =================================== */
+  if(account.name){
+    localStorage.setItem(
+      "magnusUserName",
+      account.name
+    );
+  }
+  if(account.plan){
+    localStorage.setItem(
+      "magnusPlan",
+      account.plan
+    );
+  }
+  if(account.price){
+    localStorage.setItem(
+      "magnusPrice",
+      account.price
+    );
+  }
+  if(account.bonus){
+    localStorage.setItem(
+      "magnusBonus",
+      account.bonus
+    );
+  }
+  /* =================================== */
+  /* REDIRECT */
+  /* =================================== */
+  showSuccess(
+    "✅ Login successful. Redirecting..."
+  );
+  setTimeout(function(){
+    window.location.href =
+      "dashboard.html";
+  },1000);
+});
+/* ======================================= */
+/* FORGOT PASSWORD */
+/* ======================================= */
+forgotPassword.addEventListener(
+  "click",
+  function(e){
+    e.preventDefault();
+    const savedAccount =
+      localStorage.getItem("magnusAccount");
+    if(!savedAccount){
+      showError(
+        "No saved Magnus account was found on this device."
+      );
+      return;
+    }
+    showError(
+      "For security, password recovery is not available without a backend. Please create a new account if you have forgotten your password."
+    );
+  }
+);
+/* ======================================= */
+/* AUTO-FILL SAVED EMAIL */
+/* ======================================= */
+(function(){
+  const savedAccount =
+    localStorage.getItem("magnusAccount");
+  if(!savedAccount) return;
+  try{
+    const account =
+      JSON.parse(savedAccount);
+    if(account.email){
+      email.value =
+        account.email;
+    }
+  }
+  catch(error){
+    /* Ignore invalid saved data */
+  }
+})();
+</script>
+</body>
+</html>
