@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Magnus | Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Poppins",sans-serif;background:#050505;color:#fff;padding:25px;}
+
+/* ===== ADMIN LOCK SCREEN ===== */
+#lockScreen{
+  position:fixed;inset:0;z-index:9999;
+  background: radial-gradient(circle at top right, rgba(255,153,0,0.15), transparent 30%), #050505;
+  display:flex;justify-content:center;align-items:center;padding:20px;
+}
+.lock-box{
+  width:100%;max-width:400px;
+  background:rgba(10,10,10,0.95);border:1px solid rgba(255,255,255,0.08);
+  border-radius:24px;padding:35px 28px;text-align:center;
+  box-shadow:0 25px 70px rgba(0,0,0,0.7);
+}
+.lock-box.logo{color:#ff9900;letter-spacing:7px;font-weight:700;font-size:12px;margin-bottom:15px;}
+.lock-box h2{font-size:24px;margin-bottom:8px;background:linear-gradient(to right,#ff9900,#ff0057);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.lock-box p{color:#888;font-size:13px;margin-bottom:20px;}
+.lock-box input{
+  width:100%;padding:14px 16px;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);
+  color:#fff;outline:none;font-size:14px;margin-bottom:12px;
+}
+.lock-box input:focus{border-color:#ff9900;box-shadow:0 0 0 4px rgba(255,153,0,0.08);}
+.lock-box button{
+  width:100%;padding:14px;border:0;border-radius:40px;
+  background:linear-gradient(to right,#ff9900,#ff0057);
+  color:#fff;font-weight:600;cursor:pointer;margin-top:10px;
+}
+#lockError{display:none;margin-top:12px;color:#ff4d6d;font-size:13px;background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.18);padding:10px;border-radius:10px;}
+
+/* ===== DASHBOARD ===== */
+.header{max-width:1400px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:25px;}
+.logo{color:#ff9900;letter-spacing:5px;font-weight:700;}
+.title{font-size:27px;font-weight:700;}
+.stats{max-width:1400px;margin:0 auto 25px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
+.stat{background:#111;border:1px solid #222;border-radius:18px;padding:22px;}
+.stat small{color:#888;}
+.stat strong{display:block;font-size:28px;margin-top:5px;color:#ff9900;}
+.panel{max-width:1400px;margin:auto;background:#0c0c0c;border:1px solid #222;border-radius:20px;overflow:hidden;}
+.panel-head{padding:20px;display:flex;justify-content:space-between;align-items:center;gap:15px;}
+button{border:0;padding:11px 16px;border-radius:10px;cursor:pointer;color:#fff;font-weight:600;}
+.refresh{background:#ff9900;}
+.logout{background:#222;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:14px;text-align:left;border-top:1px solid #1d1d1d;font-size:13px;white-space:nowrap;}
+th{color:#ff9900;background:#111;}
+td{color:#ccc;}
+.action{display:flex;gap:7px;}
+.reset{background:#6c3cff;}
+.delete{background:#d9294f;}
+.empty{padding:40px;text-align:center;color:#777;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);justify-content:center;align-items:center;padding:20px;z-index:100;}
+.modal{width:100%;max-width:420px;background:#111;border:1px solid #333;border-radius:20px;padding:25px;}
+.modal h2{margin-bottom:10px;}
+.modal p{color:#888;font-size:13px;margin-bottom:18px;}
+.modal input{width:100%;padding:13px;border-radius:10px;border:1px solid #333;background:#050505;color:#fff;outline:none;}
+.modal-buttons{display:flex;gap:10px;margin-top:18px;}
+.cancel{background:#333;flex:1;}
+.confirm{background:#ff9900;flex:1;}
+@media(max-width:900px){body{padding:15px;}.stats{grid-template-columns:1fr;}.panel{overflow-x:auto;}table{min-width:1100px;}.header{align-items:flex-start;flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <div class="lock-box">
+    <div class="logo">MAGNUS</div>
+    <h2>Admin Access</h2>
+    <p>Enter admin password to view dashboard. Unauthorized access is not allowed.</p>
+    <input type="password" id="adminPassInput" placeholder="Admin password">
+    <button onclick="unlockAdmin()">Unlock Dashboard</button>
+    <div id="lockError">Wrong password. Try again.</div>
+    <p style="margin-top:15px;color:#555;font-size:11px;">Default: Magnus2024! - Change it in code</p>
+  </div>
+</div>
+
+<div class="header">
+<div><div class="logo">MAGNUS</div><div class="title">Admin Dashboard</div></div>
+<div style="display:flex;gap:10px;"><button class="refresh" onclick="loadUsers()">Refresh Users</button><button class="logout" onclick="logout()">Logout</button></div>
+</div>
+
+<div class="stats">
+<div class="stat"><small>Total Users</small><strong id="totalUsers">0</strong></div>
+<div class="stat"><small>System</small><strong>ONLINE</strong></div>
+<div class="stat"><small>Protection</small><strong>LOCKED</strong></div>
+</div>
+
+<div class="panel">
+<div class="panel-head"><strong>Registered Users</strong><span id="status">Locked</span></div>
+<table><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Country</th><th>Plan</th><th>Price</th><th>Bonus</th><th>Registered</th><th>Actions</th></tr></thead><tbody id="usersBody"></tbody></table>
+</div>
+
+<div class="overlay" id="overlay"><div class="modal"><h2>Reset Password</h2><p>Create a new temporary password.</p><input type="password" id="newPassword" placeholder="New password" minlength="6"><div class="modal-buttons"><button class="cancel" onclick="closeModal()">Cancel</button><button class="confirm" onclick="confirmReset()">Reset Password</button></div></div></div>
+
+<script>
+const ADMIN_PASSWORD = "Magnus2024!"; // <--- CHANGE YOUR PASSWORD HERE
+let selectedUserId = null;
+let users = [];
+
+function unlockAdmin(){
+  const input = document.getElementById("adminPassInput").value;
+  const err = document.getElementById("lockError");
+  if(input === ADMIN_PASSWORD){
+    sessionStorage.setItem("magnusAdminAuth","ok");
+    document.getElementById("lockScreen").style.display="none";
+    loadUsers();
+  } else {
+    err.style.display="block";
+  }
+}
+function logout(){
+  sessionStorage.removeItem("magnusAdminAuth");
+  location.reload();
+}
+document.getElementById("adminPassInput").addEventListener("keydown", e=>{ if(e.key==="Enter") unlockAdmin(); });
+
+function checkAuth(){
+  if(sessionStorage.getItem("magnusAdminAuth")==="ok"){
+    document.getElementById("lockScreen").style.display="none";
+    loadUsers();
+  }
+}
+
+async function loadUsers(){
+  const body=document.getElementById("usersBody");
+  const status=document.getElementById("status");
+  body.innerHTML='<tr><td colspan="10" class="empty">Loading...</td></tr>';
+  try{
+    const res=await fetch("/api/admin/users",{headers:{"Authorization":"Basic "+btoa("admin:"+ADMIN_PASSWORD)}});
+    if(res.ok){
+      const data=await res.json();
+      users=data.users||[];
+      renderUsers(); return;
+    }
+  }catch(e){}
+  users=JSON.parse(localStorage.getItem("magnusUsers")||"[]");
+  const oldName=localStorage.getItem("magnusUserName");
+  if(oldName && users.length===0){
+    users=[{id:1,name:oldName,email:localStorage.getItem("magnusEmail")||"N/A",phone:"N/A",country:localStorage.getItem("magnusCountry")||"Nigeria",plan:localStorage.getItem("magnusPlan")||"Pro",price:localStorage.getItem("magnusPrice")||"",bonus:localStorage.getItem("magnusBonus")||"",created_at:new Date().toISOString(),password:"hidden"}];
+  }
+  renderUsers();
+}
+function renderUsers(){
+  const body=document.getElementById("usersBody");
+  document.getElementById("totalUsers").textContent=users.length;
+  document.getElementById("status").textContent="Updated - "+new Date().toLocaleTimeString();
+  if(!users.length){ body.innerHTML='<tr><td colspan="10" class="empty">No users yet. Register on register.html first.</td></tr>'; return; }
+  body.innerHTML=users.map((user,idx)=>{
+    const date=new Date(user.created_at||Date.now()).toLocaleString();
+    const id=user.id||idx+1;
+    return `<tr><td>${esc(id)}</td><td>${esc(user.name)}</td><td>${esc(user.email)}</td><td>${esc(user.phone||"N/A")}</td><td>${esc(user.country||"Nigeria")}</td><td>${esc(user.plan)}</td><td>${esc(user.price||"")}</td><td>${esc(user.bonus||"")}</td><td>${esc(date)}</td><td><div class="action"><button class="reset" onclick="openReset(${idx})">Reset</button><button class="delete" onclick="deleteUser(${idx})">Delete</button></div></td></tr>`;
+  }).join("");
+}
+function openReset(idx){ selectedUserId=idx; document.getElementById("newPassword").value=""; document.getElementById("overlay").style.display="flex"; }
+function closeModal(){ selectedUserId=null; document.getElementById("overlay").style.display="none"; }
+async function confirmReset(){
+  const newPass=document.getElementById("newPassword").value;
+  if(newPass.length<6){ alert("Password must be at least 6 characters"); return; }
+  try{
+    const res=await fetch("/api/admin/users/"+users[selectedUserId].id+"/reset-password",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Basic "+btoa("admin:"+ADMIN_PASSWORD)},body:JSON.stringify({newPassword:newPass})});
+    if(res.ok){ alert("Password reset via API!"); closeModal(); return; }
+  }catch(e){}
+  users[selectedUserId].password=newPass;
+  localStorage.setItem("magnusUsers",JSON.stringify(users));
+  alert("Password reset to: "+newPass);
+  closeModal(); renderUsers();
+}
+async function deleteUser(idx){
+  if(!confirm("Delete this user permanently?")) return;
+  try{
+    const res=await fetch("/api/admin/users/"+users[idx].id,{method:"DELETE",headers:{"Authorization":"Basic "+btoa("admin:"+ADMIN_PASSWORD)}});
+    if(res.ok){ loadUsers(); return; }
+  }catch(e){}
+  users.splice(idx,1);
+  localStorage.setItem("magnusUsers",JSON.stringify(users));
+  renderUsers();
+}
+function esc(v){ return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;"); }
+checkAuth();
+</script>
+</body>
+</html>
